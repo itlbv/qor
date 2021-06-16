@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
         std::cout << "SDL_Init FAILED. Error: " << SDL_GetError() << std::endl;
 
     Qor qor;
-    while (true) {
+    while (!Qor::quit) {
         qor.run();
     }
 

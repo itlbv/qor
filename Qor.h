@@ -10,6 +10,8 @@ private:
     RenderWindow window;
     Viewport viewport;
 public:
+    static bool quit;
+
     Qor();
 
     void run();
