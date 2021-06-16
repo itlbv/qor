@@ -3,11 +3,17 @@
 
 #include <SDL.h>
 #include "Viewport.h"
+#include "Entity.h"
 
 class RenderWindow {
 private:
     SDL_Window *window;
     SDL_Renderer *renderer;
+
+    SDL_Rect *getEntityRenderShape(Entity *e);
+
+    int worldToScreen(double a);
+
 public:
     RenderWindow(const char *title, int width, int height);
 
@@ -16,6 +22,8 @@ public:
     void startFrame();
 
     void showFrame();
+
+    void renderEntity(Entity &e);
 
     ~RenderWindow();
 };

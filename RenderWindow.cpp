@@ -27,6 +27,30 @@ void RenderWindow::showFrame() {
     SDL_RenderPresent(renderer);
 }
 
+void RenderWindow::renderEntity(Entity &e) {
+    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255); //blue
+    SDL_RenderFillRect(renderer, getEntityRenderShape(&e));
+
+    //render dot indicating entity's position
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // white
+    SDL_RenderDrawPoint(renderer,
+                        worldToScreen(e.pos.x),
+                        worldToScreen(e.pos.y));
+}
+
+SDL_Rect *RenderWindow::getEntityRenderShape(Entity *e) {
+    SDL_Rect *renderShape = e->getRenderShape();
+    renderShape->x = worldToScreen(e->pos.x - e->radius);
+    renderShape->y = worldToScreen(e->pos.y - e->radius);
+    renderShape->w = worldToScreen(e->radius * 2);
+    renderShape->h = worldToScreen(e->radius * 2);
+    return renderShape;
+}
+
+int RenderWindow::worldToScreen(double a) {
+    return a * 50;
+}
+
 RenderWindow::~RenderWindow() {
     SDL_DestroyWindow(window);
 }
