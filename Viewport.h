@@ -9,6 +9,8 @@ private:
     SDL_Rect viewportRect;
 public:
     Viewport(int width, int height);
+
+    SDL_Rect *getViewportRect();
 };
 
 

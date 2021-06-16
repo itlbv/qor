@@ -2,6 +2,7 @@
 #define QOR_RENDERWINDOW_H
 
 #include <SDL.h>
+#include "Viewport.h"
 
 class RenderWindow {
 private:
@@ -9,6 +10,12 @@ private:
     SDL_Renderer *renderer;
 public:
     RenderWindow(const char *title, int width, int height);
+
+    void updateViewport(Viewport *viewport);
+
+    void startFrame();
+
+    void showFrame();
 
     ~RenderWindow();
 };

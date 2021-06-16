@@ -9,5 +9,6 @@ Qor::Qor()
 }
 
 void Qor::run() {
-
+    window.startFrame();
+    window.showFrame();
 }
