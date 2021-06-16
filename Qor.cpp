@@ -5,6 +5,7 @@
 #define SCREEN_HEIGHT_PXL 900
 
 bool Qor::quit = false;
+std::vector<Entity> Qor::entities;
 
 Qor::Qor()
         : window(RenderWindow("Qor", SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)),

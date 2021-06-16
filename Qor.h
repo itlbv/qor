@@ -12,14 +12,13 @@ private:
     RenderWindow window;
     Viewport viewport;
 
-    std::vector<Entity> entities;
-
     void createEntities();
 
     void renderEntities();
 
 public:
     static bool quit;
+    static std::vector<Entity> entities;
 
     Qor();
 
