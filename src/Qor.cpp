@@ -13,7 +13,7 @@ Qor::Qor()
     createEntities();
 }
 
-void Qor::run() {
+void Qor::run(unsigned int deltaTime) {
     Input::processInput();
 
     window.startFrame();

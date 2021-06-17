@@ -22,7 +22,7 @@ public:
 
     Qor();
 
-    void run();
+    void run(unsigned int deltaTime);
 };
 
 
