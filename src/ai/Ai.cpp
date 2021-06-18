@@ -1,10 +1,5 @@
 #include "Ai.h"
-#include "btree/BehaviorTree.h"
 
-void ai::init() {
-    btree::build();
-}
+void ai::init() {}
 
-void ai::run() {
-
-}
+void ai::run() {}

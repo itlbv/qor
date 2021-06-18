@@ -8,7 +8,7 @@ namespace btree {
     private:
         Node *root;
     public:
-        Behavior(Node *root_a);
+        explicit Behavior(Node *root_a);
 
         Status run();
     };
