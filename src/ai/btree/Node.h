@@ -1,7 +1,7 @@
 #ifndef QOR_NODE_H
 #define QOR_NODE_H
 
-#include "BehaviorTree.h"
+#include "Status.h"
 
 namespace btree {
     class Node {

@@ -2,12 +2,6 @@
 #define QOR_BEHAVIORTREE_H
 
 namespace btree {
-    enum Status {
-        SUCCESS,
-        FAILURE,
-        RUNNING
-    };
-
     void build();
 }
 
