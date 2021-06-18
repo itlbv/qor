@@ -1,5 +1,6 @@
 #include "Qor.h"
 #include "Input.h"
+#include "ai/Ai.h"
 
 #define SCREEN_WIDTH_PXL 1200
 #define SCREEN_HEIGHT_PXL 900
@@ -15,6 +16,8 @@ Qor::Qor()
 
 void Qor::run(unsigned int deltaTime) {
     Input::processInput();
+
+    ai::run();
 
     window.startFrame();
     renderEntities();
