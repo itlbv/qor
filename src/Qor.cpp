@@ -12,6 +12,7 @@ Qor::Qor()
         : window(RenderWindow("Qor", SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)),
           viewport(Viewport(SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)) {
     createEntities();
+    ai::init();
 }
 
 void Qor::run(unsigned int deltaTime) {

@@ -2,6 +2,8 @@
 #define QOR_AI_H
 
 namespace ai {
+    void init();
+
     void run();
 }
 
