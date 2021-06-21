@@ -2,11 +2,14 @@
 #define QOR_ENTITY_H
 
 #include <SDL.h>
+#include <memory>
 #include "Vect.h"
 
 class Entity {
 private:
-    SDL_Rect renderShape{};
+    const static double BodyRadius;
+    std::unique_ptr<SDL_Rect> _renderShape;
+
 public:
     Vect pos;
     double radius;
@@ -15,6 +18,5 @@ public:
 
     SDL_Rect *getRenderShape();
 };
-
 
 #endif //QOR_ENTITY_H

@@ -28,9 +28,9 @@ void Input::updateMousePos() {
 void Input::registerClickOnEntity() {
     if (sdlEvent.type == SDL_MOUSEBUTTONDOWN) {
         if (sdlEvent.button.button == SDL_BUTTON_LEFT) {
-            for (Entity &e : Qor::entities) {
-                if (SDL_PointInRect(&mousePos, e.getRenderShape())) {
-                    selectedEntity = &e;
+            for (auto &e : Qor::entities) {
+                if (SDL_PointInRect(&mousePos, e->getRenderShape())) {
+                    selectedEntity = e.get();
                 }
             }
         } else if (sdlEvent.button.button == SDL_BUTTON_RIGHT) {

@@ -5,8 +5,9 @@
 Entity::Entity(double x, double y)
         : pos(Vect{x, y}),
           radius(ENTITY_BODY_RADIUS) {
+    _renderShape = std::make_unique<SDL_Rect>();
 }
 
 SDL_Rect *Entity::getRenderShape() {
-    return &renderShape;
+    return _renderShape.get();
 }
