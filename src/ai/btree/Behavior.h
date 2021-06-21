@@ -2,6 +2,7 @@
 #define QOR_BEHAVIOR_H
 
 #include "Node.h"
+#include "../../Entity.h"
 
 namespace btree {
     class Behavior {
@@ -10,7 +11,7 @@ namespace btree {
     public:
         explicit Behavior(Node *a_root);
 
-        Status run();
+        Status run(Entity &e);
     };
 }
 

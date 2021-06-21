@@ -9,7 +9,7 @@ namespace ai {
         assignDefaultBehaviorToNewEntities();
 
         for (auto &eb : entitiesBehaviors) {
-            eb.second->run();
+            eb.second->run(*eb.first);
         }
     }
 

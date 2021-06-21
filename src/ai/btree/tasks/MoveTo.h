@@ -1,12 +1,13 @@
 #ifndef QOR_MOVETO_H
 #define QOR_MOVETO_H
 
-#include "../Node.h"
+#include "../../../Entity.h"
+#include "../Task.h"
 
 namespace btree {
-    class MoveTo : public Node {
+    class MoveTo : public Task {
     public:
-        Status run() override;
+        Status run(Entity &e) override;
     };
 }
 
