@@ -14,7 +14,7 @@ void Input::processInput() {
 }
 
 void Input::registerQuit() {
-    if (sdlEvent.type == SDL_QUIT) {
+    if (sdlEvent.type == SDL_QUIT || keyDown() == SDLK_ESCAPE) {
         Qor::quit = true;
     }
 }
@@ -39,4 +39,11 @@ void Input::registerClickOnEntity() {
             }
         }
     }
+}
+
+int Input::keyDown() {
+    if (sdlEvent.type == SDL_KEYDOWN) {
+        return sdlEvent.key.keysym.sym;
+    }
+    return -1;
 }

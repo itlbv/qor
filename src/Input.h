@@ -16,6 +16,8 @@ private:
 
     static void registerClickOnEntity();
 
+    static int keyDown();
+
 public:
     static void processInput();
 };
