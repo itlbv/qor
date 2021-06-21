@@ -7,19 +7,18 @@
 #define SCREEN_HEIGHT_PXL 900
 
 bool Qor::quit = false;
-std::vector<std::unique_ptr<Entity>> Qor::entities;
+std::vector<std::shared_ptr<Entity>> Qor::entities;
 
 Qor::Qor()
         : window(RenderWindow("Qor", SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)),
           viewport(Viewport(SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)) {
     createEntities();
-    ai::init();
 }
 
 void Qor::run(unsigned int deltaTime) {
     Input::processInput();
 
-    ai::run();
+    ai::Ai::run();
 
     window.startFrame();
     renderEntities();
@@ -27,8 +26,8 @@ void Qor::run(unsigned int deltaTime) {
 }
 
 void Qor::createEntities() {
-    entities.push_back(std::make_unique<Entity>(1, 1));
-    entities.push_back(std::make_unique<Entity>(3, 4));
+    entities.push_back(std::make_shared<Entity>(1, 1));
+    entities.push_back(std::make_shared<Entity>(3, 4));
 }
 
 void Qor::renderEntities() {

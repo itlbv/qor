@@ -8,7 +8,7 @@
 namespace btree {
     class BehaviorTrees {
     public:
-        static std::map<std::string, std::unique_ptr<Behavior>> behaviors;
+        static std::map<std::string, std::shared_ptr<Behavior>> behaviors;
 
         static void initBehaviors();
     };

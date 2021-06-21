@@ -1,10 +1,18 @@
 #ifndef QOR_AI_H
 #define QOR_AI_H
 
-namespace ai {
-    void init();
+#include <map>
+#include "../Entity.h"
+#include "btree/Behavior.h"
 
-    void run();
+namespace ai {
+    class Ai {
+    private:
+    public:
+        static std::map<std::shared_ptr<Entity>, std::shared_ptr<btree::Behavior>> entitiesBehaviors;
+
+        static void run();
+    };
 }
 
 #endif //QOR_AI_H

@@ -18,7 +18,7 @@ private:
 
 public:
     static bool quit;
-    static std::vector<std::unique_ptr<Entity>> entities;
+    static std::vector<std::shared_ptr<Entity>> entities;
 
     Qor();
 
