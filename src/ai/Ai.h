@@ -12,6 +12,8 @@ namespace ai {
         static std::map<std::shared_ptr<Entity>, std::shared_ptr<btree::Behavior>> entitiesBehaviors;
 
         static void run();
+
+        static void assignDefaultBehaviorToNewEntities();
     };
 }
 
