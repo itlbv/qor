@@ -6,9 +6,9 @@
 namespace btree {
     class Behavior {
     private:
-        Node *root;
+        Node *_root;
     public:
-        explicit Behavior(Node *root_a);
+        explicit Behavior(Node *a_root);
 
         Status run();
     };

@@ -6,7 +6,7 @@
 namespace btree {
     class BehaviorTrees {
     public:
-        static Behavior moveTo;
+        static Behavior _moveTo;
 
         static Behavior buildMoveTo();
     };

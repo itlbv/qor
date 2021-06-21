@@ -1,8 +1,10 @@
 #include "Behavior.h"
 
-btree::Behavior::Behavior(btree::Node *root_a)
-        : root(root_a) {}
+namespace btree {
+    Behavior::Behavior(Node *a_root)
+            : _root(a_root) {}
 
-btree::Status btree::Behavior::run() {
-    return root->run();
+    Status Behavior::run() {
+        return _root->run();
+    }
 }
