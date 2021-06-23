@@ -7,7 +7,6 @@
 
 class Entity {
 private:
-    const static double BodyRadius;
     std::unique_ptr<SDL_Rect> _renderShape;
 
 public:
