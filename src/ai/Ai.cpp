@@ -17,9 +17,14 @@ namespace ai {
         for (auto &e : Qor::entities) {
             auto it = entitiesBehaviors.find(e);
             if (it == entitiesBehaviors.end())
-                entitiesBehaviors.insert(std::make_pair(e, btree::BehaviorTrees::behaviors["moveTo"]));
+                entitiesBehaviors.insert(std::make_pair(e, btree::BehaviorTrees::behaviors["doNothing"]));
         }
     }
 
-    void Ai::assignBehaviorToEntity(Entity *a_e, const char *behavior) {}
+    void Ai::assignBehaviorToEntity(Entity *a_e, const char *behavior) {
+        for (auto &eb : entitiesBehaviors) {
+            if (eb.first.get() == a_e)
+                eb.second = btree::BehaviorTrees::behaviors["moveTo"];
+        }
+    }
 }
