@@ -24,7 +24,7 @@ namespace ai {
     void Ai::assignBehaviorToEntity(Entity *a_e, const char *behavior) {
         for (auto &eb : entitiesBehaviors) {
             if (eb.first.get() == a_e)
-                eb.second = btree::BehaviorTrees::behaviors["moveTo"];
+                eb.second = btree::BehaviorTrees::behaviors[behavior];
         }
     }
 }
