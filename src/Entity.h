@@ -8,11 +8,11 @@
 class Entity {
 private:
     std::unique_ptr<SDL_Rect> _renderShape;
-    Vect dest;
+    Vect _dest;
 
 public:
-    Vect pos;
-    const double radius;
+    Vect _pos;
+    const double _radius;
 
     Entity(double x, double y);
 

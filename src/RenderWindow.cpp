@@ -34,16 +34,16 @@ void RenderWindow::renderEntity(Entity &e) {
     //render dot indicating entity's position
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // white
     SDL_RenderDrawPoint(renderer,
-                        worldToScreen(e.pos.x),
-                        worldToScreen(e.pos.y));
+                        worldToScreen(e._pos.x),
+                        worldToScreen(e._pos.y));
 }
 
 SDL_Rect *RenderWindow::getEntityRenderShape(Entity *e) {
     SDL_Rect *renderShape = e->getRenderShape();
-    renderShape->x = worldToScreen(e->pos.x - e->radius);
-    renderShape->y = worldToScreen(e->pos.y - e->radius);
-    renderShape->w = worldToScreen(e->radius * 2);
-    renderShape->h = worldToScreen(e->radius * 2);
+    renderShape->x = worldToScreen(e->_pos.x - e->_radius);
+    renderShape->y = worldToScreen(e->_pos.y - e->_radius);
+    renderShape->w = worldToScreen(e->_radius * 2);
+    renderShape->h = worldToScreen(e->_radius * 2);
     return renderShape;
 }
 
