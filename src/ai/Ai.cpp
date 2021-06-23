@@ -20,4 +20,6 @@ namespace ai {
                 entitiesBehaviors.insert(std::make_pair(e, btree::BehaviorTrees::behaviors["moveTo"]));
         }
     }
+
+    void Ai::assignBehaviorToEntity(Entity *a_e, const char *behavior) {}
 }

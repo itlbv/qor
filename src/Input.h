@@ -16,6 +16,10 @@ private:
 
     static void registerClickOnEntity();
 
+    static void selectOrClearEntity();
+
+    static void assignMoveToToEntity();
+
     static int keyDown();
 
 public:

@@ -14,6 +14,8 @@ namespace ai {
         static void run();
 
         static void assignDefaultBehaviorToNewEntities();
+
+        static void assignBehaviorToEntity(Entity *entity, const char *behavior);
     };
 }
 
