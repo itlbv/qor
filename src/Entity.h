@@ -8,6 +8,7 @@
 class Entity {
 private:
     std::unique_ptr<SDL_Rect> _renderShape;
+    Vect dest;
 
 public:
     Vect pos;
