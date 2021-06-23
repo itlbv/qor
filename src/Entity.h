@@ -12,7 +12,7 @@ private:
 
 public:
     Vect pos;
-    double radius;
+    const double radius;
 
     Entity(double x, double y);
 
