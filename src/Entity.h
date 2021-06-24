@@ -8,7 +8,7 @@
 class Entity {
 private:
     std::unique_ptr<SDL_Rect> _renderShape;
-    Vect _dest;
+    std::unique_ptr<Vect> _dest;
 
 public:
     Vect _pos;
@@ -17,6 +17,10 @@ public:
     Entity(double x, double y);
 
     SDL_Rect *getRenderShape();
+
+    void setDest(double a_x, double a_y);
+
+    Vect *getDest();
 };
 
 #endif //QOR_ENTITY_H

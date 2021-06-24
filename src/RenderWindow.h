@@ -10,12 +10,11 @@ private:
     SDL_Window *window;
     SDL_Renderer *renderer;
 
-    SDL_Rect *getEntityRenderShape(Entity *e);
-
-    int worldToScreen(double a);
-
+    static SDL_Rect *getEntityRenderShape(Entity *e);
 public:
     RenderWindow(const char *title, int width, int height);
+
+    ~RenderWindow();
 
     void updateViewport(Viewport *viewport);
 
@@ -24,8 +23,6 @@ public:
     void showFrame();
 
     void renderEntity(Entity &e);
-
-    ~RenderWindow();
 };
 
 

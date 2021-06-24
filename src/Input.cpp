@@ -1,6 +1,7 @@
 #include "Input.h"
 #include "Qor.h"
 #include "ai/Ai.h"
+#include "Util.h"
 
 SDL_Event Input::sdlEvent;
 SDL_Point Input::mousePos;
@@ -48,6 +49,7 @@ void Input::selectOrClearEntity() {
 void Input::assignMoveToToEntity() {
     if (selectedEntity != nullptr) {
         ai::Ai::assignBehaviorToEntity(selectedEntity, "moveTo");
+        selectedEntity->setDest(util::screenToWorld(mousePos.x), util::screenToWorld(mousePos.y));
     }
 }
 

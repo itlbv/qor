@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SDL.h>
 #include "RenderWindow.h"
+#include "Util.h"
 
 RenderWindow::RenderWindow(const char *title, int width, int height)
         : window(nullptr),
@@ -12,6 +13,10 @@ RenderWindow::RenderWindow(const char *title, int width, int height)
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (renderer == nullptr)
         std::cout << "SDL_CreateRenderer FAILED. Error: " << SDL_GetError();
+}
+
+RenderWindow::~RenderWindow() {
+    SDL_DestroyWindow(window);
 }
 
 void RenderWindow::updateViewport(Viewport *viewport) {
@@ -34,23 +39,15 @@ void RenderWindow::renderEntity(Entity &e) {
     //render dot indicating entity's position
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // white
     SDL_RenderDrawPoint(renderer,
-                        worldToScreen(e._pos.x),
-                        worldToScreen(e._pos.y));
+                        util::worldToScreen(e._pos.x),
+                        util::worldToScreen(e._pos.y));
 }
 
 SDL_Rect *RenderWindow::getEntityRenderShape(Entity *e) {
     SDL_Rect *renderShape = e->getRenderShape();
-    renderShape->x = worldToScreen(e->_pos.x - e->_radius);
-    renderShape->y = worldToScreen(e->_pos.y - e->_radius);
-    renderShape->w = worldToScreen(e->_radius * 2);
-    renderShape->h = worldToScreen(e->_radius * 2);
+    renderShape->x = util::worldToScreen(e->_pos.x - e->_radius);
+    renderShape->y = util::worldToScreen(e->_pos.y - e->_radius);
+    renderShape->w = util::worldToScreen(e->_radius * 2);
+    renderShape->h = util::worldToScreen(e->_radius * 2);
     return renderShape;
-}
-
-int RenderWindow::worldToScreen(double a) {
-    return a * 50;
-}
-
-RenderWindow::~RenderWindow() {
-    SDL_DestroyWindow(window);
 }
