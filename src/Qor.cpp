@@ -7,6 +7,7 @@
 #define SCREEN_HEIGHT_PXL 900
 
 bool Qor::quit = false;
+double Qor::delta;
 std::vector<std::shared_ptr<Entity>> Qor::entities;
 
 Qor::Qor()
@@ -16,6 +17,8 @@ Qor::Qor()
 }
 
 void Qor::run(unsigned int deltaTime) {
+    Qor::delta = (double) deltaTime / 1000;
+
     Input::processInput();
 
     ai::Ai::run();
