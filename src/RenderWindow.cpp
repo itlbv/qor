@@ -26,6 +26,28 @@ void RenderWindow::updateViewport(Viewport *viewport) {
 void RenderWindow::startFrame() {
     SDL_SetRenderDrawColor(renderer, 90, 125, 70, 255); // set default green
     SDL_RenderClear(renderer);
+    RenderWindow::renderMapGrid();
+}
+
+void RenderWindow::renderMapGrid() {
+    int mapSize = util::worldToScreen(40);
+
+    //draw horizontal
+    for (int i = 0; i < mapSize; ++i) {
+        int coord = util::worldToScreen(i);
+        renderLine(0, coord, mapSize, coord);
+    }
+
+    //draw vertical
+    for (int i = 0; i < mapSize; ++i) {
+        int coord = util::worldToScreen(i);
+        renderLine(coord, 0, coord, mapSize);
+    }
+}
+
+void RenderWindow::renderLine(int x1, int y1, int x2, int y2) {
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
 }
 
 void RenderWindow::showFrame() {
