@@ -13,6 +13,8 @@ namespace ai {
 
         static void run();
 
+        static void runBehavior(const std::pair<std::shared_ptr<Entity> const, std::shared_ptr<btree::Behavior>> &eb);
+
         static void assignDefaultBehaviorToNewEntities();
 
         static void assignBehaviorToEntity(Entity *entity, const char *behavior);

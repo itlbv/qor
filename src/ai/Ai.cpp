@@ -9,8 +9,13 @@ namespace ai {
         assignDefaultBehaviorToNewEntities();
 
         for (auto &eb : entitiesBehaviors) {
-            eb.second->run(*eb.first);
+            runBehavior(eb);
         }
+    }
+
+    void Ai::runBehavior(const std::pair<std::shared_ptr<Entity> const, std::shared_ptr<btree::Behavior>> &eb) {
+        if (eb.second->run(*eb.first) != btree::RUNNING)
+            assignBehaviorToEntity(eb.first.get(), "doNothing");
     }
 
     void Ai::assignDefaultBehaviorToNewEntities() {
