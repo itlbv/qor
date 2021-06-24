@@ -6,6 +6,6 @@ namespace util {
     }
 
     double screenToWorld(int a_screen) {
-        return a_screen / 50;
+        return a_screen / (double) 50;
     }
 }
