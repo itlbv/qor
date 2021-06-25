@@ -13,7 +13,7 @@ namespace btree {
 
         static void move(Entity &e);
 
-        static void checkCollisions(Entity &e);
+        static void checkCollisions(Entity &moving_entity);
 
         static bool destinationReached(Entity &e);
 

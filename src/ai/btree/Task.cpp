@@ -5,7 +5,7 @@ namespace btree {
     Task::Task() = default;
 
     Status Task::run(Entity &e) {
-        Qor::entities[0]->_pos->x++;
+        Qor::entities[0]->pos_->x++;
         return RUNNING;
     }
 }

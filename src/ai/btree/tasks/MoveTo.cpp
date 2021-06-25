@@ -16,29 +16,28 @@ namespace btree {
     }
 
     void MoveTo::move(Entity &e) {
-        velocity_ = e._pos->vectorTo(*e.getDest());
+        velocity_ = e.pos_->vectorTo(*e.getDest());
         velocity_.normalize();
         velocity_.setLength(velocity_.length() * Qor::delta * Speed);
-        e._pos->add(velocity_.x, velocity_.y);
+        e.pos_->add(velocity_.x, velocity_.y);
     }
 
-    void MoveTo::checkCollisions(Entity &e) {
-        for (auto &e_ : Qor::entities) {
-            if (e_.get() == &e)
+    void MoveTo::checkCollisions(Entity &moving_entity) {
+        for (auto &e : Qor::entities) {
+            if (e.get() == &moving_entity)
                 continue;
 
-            double distance_to_entity = e._pos->distanceTo(*e_->_pos);
-
-            if (distance_to_entity < e._radius * 2) {
-                double penetration_distance = e._radius * 2 - distance_to_entity;
-                Vect collisionNormal = e._pos->vectorTo(*e_->_pos);
-                collisionNormal.setLength(penetration_distance);
-                e._pos->add(collisionNormal.x, collisionNormal.y);
+            double dist_to_entity = moving_entity.pos_->distanceTo(*e->pos_);
+            if (dist_to_entity < moving_entity.radius_ * 2) {
+                double penetration_dist = moving_entity.radius_ * 2 - dist_to_entity;
+                Vect collisionNormal = moving_entity.pos_->vectorTo(*e->pos_);
+                collisionNormal.setLength(-penetration_dist);
+                moving_entity.pos_->add(collisionNormal.x, collisionNormal.y);
             }
         }
     }
 
     bool MoveTo::destinationReached(Entity &e) {
-        return e._pos->distanceTo(*e.getDest()) <= DestinationReachedThreshold;
+        return e.pos_->distanceTo(*e.getDest()) <= DestinationReachedThreshold;
     }
 }

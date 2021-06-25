@@ -11,11 +11,11 @@ private:
     std::unique_ptr<Vect> _dest;
 
 protected:
-    std::unique_ptr<Vect> _velocity;
+    std::unique_ptr<Vect> velocity_;
 
 public:
-    std::unique_ptr<Vect> _pos;
-    const double _radius;
+    std::unique_ptr<Vect> pos_;
+    const double radius_;
 
     Entity(double a_x, double a_y);
 
