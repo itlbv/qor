@@ -10,6 +10,8 @@ bool Qor::quit = false;
 double Qor::delta;
 std::vector<std::shared_ptr<Entity>> Qor::entities;
 
+std::unique_ptr<Player> Qor::player = std::make_unique<Player>(5, 5);
+
 Qor::Qor()
         : window(RenderWindow("Qor", SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)),
           viewport(Viewport(SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)) {
@@ -21,10 +23,12 @@ void Qor::run(unsigned int deltaTime) {
 
     Input::processInput();
 
+    player->update();
     ai::Ai::run();
 
     window.startFrame();
     renderEntities();
+    renderPlayer();
     window.showFrame();
 }
 
@@ -37,4 +41,8 @@ void Qor::renderEntities() {
     for (auto &e : entities) {
         window.renderEntity(*e.get());
     }
+}
+
+void Qor::renderPlayer() {
+    window.renderEntity(*player);
 }

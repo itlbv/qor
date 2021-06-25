@@ -9,12 +9,15 @@ private:
     static SDL_Event sdlEvent;
     static SDL_Point mousePos;
     static Entity *selectedEntity;
+    static Vect player_velocity;
 
     static void registerQuit();
 
     static void updateMousePos();
 
     static void registerClickOnEntity();
+
+    static void setPlayerVelocity();
 
     static void selectOrClearEntity();
 

@@ -40,6 +40,21 @@ struct Vect {
         x += a_x;
         y += a_y;
     }
+
+    void zero() {
+        x = 0;
+        y = 0;
+    }
+
+    void set(Vect &vect) {
+        x = vect.x;
+        y = vect.y;
+    }
+
+    void set(double x_a, double y_a) {
+        x = x_a;
+        y = y_a;
+    }
 };
 
 #endif //QOR_VECT_H
