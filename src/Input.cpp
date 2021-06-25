@@ -3,6 +3,8 @@
 #include "ai/Ai.h"
 #include "Util.h"
 
+const Uint8 *Input::keyStates;
+
 SDL_Event Input::sdlEvent;
 SDL_Point Input::mousePos;
 Entity *Input::selectedEntity;
@@ -10,20 +12,21 @@ Vect Input::player_velocity{};
 
 void Input::processInput() {
     while (SDL_PollEvent(&sdlEvent)) {
+        keyStates = SDL_GetKeyboardState(nullptr);
+
         registerQuit();
-        updateMousePos();
+        registerMousePos();
         registerClickOnEntity();
-        setPlayerVelocity();
+        registerPlayerVelocity();
     }
 }
 
 void Input::registerQuit() {
-    if (sdlEvent.type == SDL_QUIT || keyDown() == SDLK_ESCAPE) {
+    if (sdlEvent.type == SDL_QUIT || keyStates[SDL_SCANCODE_ESCAPE])
         Qor::quit = true;
-    }
 }
 
-void Input::updateMousePos() {
+void Input::registerMousePos() {
     if (sdlEvent.type == SDL_MOUSEMOTION) {
         mousePos = {sdlEvent.motion.x, sdlEvent.motion.y};
     }
@@ -55,28 +58,17 @@ void Input::assignMoveToToEntity() {
     }
 }
 
-void Input::setPlayerVelocity() {
+void Input::registerPlayerVelocity() {
     player_velocity.zero();
-    switch (keyDown()) {
-        case SDLK_LEFT:
-            player_velocity.add(-0.1, 0);
-            break;
-        case SDLK_RIGHT:
-            player_velocity.add(0.1, 0);
-            break;
-        case SDLK_UP:
-            player_velocity.add(0, -0.1);
-            break;
-        case SDLK_DOWN:
-            player_velocity.add(0, 0.1);
-            break;
-    }
-    Qor::player->velocity_player_.set(player_velocity);
-}
 
-int Input::keyDown() {
-    if (sdlEvent.type == SDL_KEYDOWN) {
-        return sdlEvent.key.keysym.sym;
-    }
-    return -1;
+    if (keyStates[SDL_SCANCODE_UP])
+        player_velocity.add(0, -0.1);
+    if (keyStates[SDL_SCANCODE_DOWN])
+        player_velocity.add(0, 0.1);
+    if (keyStates[SDL_SCANCODE_LEFT])
+        player_velocity.add(-0.1, 0);
+    if (keyStates[SDL_SCANCODE_RIGHT])
+        player_velocity.add(0.1, 0);
+
+    Qor::player->velocity_player_.set(player_velocity);
 }

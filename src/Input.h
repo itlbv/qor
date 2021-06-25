@@ -6,6 +6,9 @@
 
 class Input {
 private:
+    static const Uint8 *keyStates;
+
+
     static SDL_Event sdlEvent;
     static SDL_Point mousePos;
     static Entity *selectedEntity;
@@ -13,17 +16,15 @@ private:
 
     static void registerQuit();
 
-    static void updateMousePos();
+    static void registerMousePos();
 
     static void registerClickOnEntity();
 
-    static void setPlayerVelocity();
+    static void registerPlayerVelocity();
 
     static void selectOrClearEntity();
 
     static void assignMoveToToEntity();
-
-    static int keyDown();
 
 public:
     static void processInput();
