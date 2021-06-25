@@ -8,7 +8,11 @@
 namespace btree {
     class IsTargetAlive : public Task {
     public:
-        Status run(Entity &e) override;
+        Status run(Entity &e) override {
+            if (e.isAlive())
+                return SUCCESS;
+            else return FAILURE;
+        };
     };
 }
 

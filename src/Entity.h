@@ -7,8 +7,9 @@
 
 class Entity {
 private:
-    std::unique_ptr<SDL_Rect> _renderShape;
-    std::unique_ptr<Vect> _dest;
+    std::unique_ptr<SDL_Rect> renderShape_;
+    std::unique_ptr<Vect> dest_;
+    bool alive_;
 
 protected:
     std::unique_ptr<Vect> velocity_;
@@ -28,6 +29,8 @@ public:
     void setVelocity(Vect &velocity_a);
 
     Vect *getVelocity();
+
+    bool isAlive();
 };
 
 #endif //QOR_ENTITY_H
