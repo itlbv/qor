@@ -7,12 +7,9 @@
 class Input {
 private:
     static const Uint8 *keyStates;
-
-
     static SDL_Event sdlEvent;
     static SDL_Point mousePos;
     static Entity *selectedEntity;
-    static Vect player_velocity;
 
     static void registerQuit();
 

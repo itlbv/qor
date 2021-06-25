@@ -9,7 +9,7 @@ private:
     void move();
 
 public:
-    Vect velocity_player_;
+    static const double Speed;
 
     Player(double x_a, double y_a);
 

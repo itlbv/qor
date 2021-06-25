@@ -9,6 +9,8 @@ class Entity {
 private:
     std::unique_ptr<SDL_Rect> _renderShape;
     std::unique_ptr<Vect> _dest;
+
+protected:
     std::unique_ptr<Vect> _velocity;
 
 public:
@@ -23,7 +25,7 @@ public:
 
     Vect *getDest();
 
-    void setVelocity(double a_x, double a_y);
+    void setVelocity(Vect &velocity_a);
 
     Vect *getVelocity();
 };

@@ -25,9 +25,9 @@ Vect *Entity::getDest() {
     return _dest.get();
 }
 
-void Entity::setVelocity(double a_x, double a_y) {
-    _velocity->x = a_x;
-    _velocity->y = a_y;
+void Entity::setVelocity(Vect &velocity_a) {
+    _velocity->x = velocity_a.x;
+    _velocity->y = velocity_a.y;
 }
 
 Vect *Entity::getVelocity() {
