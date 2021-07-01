@@ -4,11 +4,15 @@
 #include "Composite.h"
 
 namespace btree {
-    class Sequence : public Composite {
+    class Sequence : public Node {
+    private:
+        std::vector<std::unique_ptr<Node>> children_;
     public:
-        Sequence(std::vector<std::unique_ptr<Node>> children_a);
+        Sequence();
 
         Status run(Entity &e) override;
+
+        void buildAttackSequence();
     };
 }
 

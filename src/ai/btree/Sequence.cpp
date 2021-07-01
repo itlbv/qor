@@ -1,8 +1,12 @@
 #include "Sequence.h"
+#include "tasks/MoveTo.h"
+#include "checks/IsTargetAlive.h"
 
 namespace btree {
-    Sequence::Sequence(std::vector<std::unique_ptr<Node>> children_a)
-            : Composite(std::move(children_a)) {}
+    Sequence::Sequence()
+            : Node() {
+        buildAttackSequence();
+    }
 
     Status Sequence::run(Entity &e) {
         for (auto &child : children_) {
@@ -15,5 +19,10 @@ namespace btree {
             else return FAILURE;
         }
         return RUNNING;
+    }
+
+    void Sequence::buildAttackSequence() {
+        children_.push_back(std::make_unique<IsTargetAlive>());
+        children_.push_back(std::make_unique<MoveTo>());
     }
 }
