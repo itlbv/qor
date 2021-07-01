@@ -9,6 +9,7 @@ class Entity {
 private:
     std::unique_ptr<SDL_Rect> renderShape_;
     std::unique_ptr<Vect> dest_;
+    std::shared_ptr<Entity> target;
     bool alive_;
 
 protected:
@@ -25,6 +26,10 @@ public:
     void setDest(double a_x, double a_y);
 
     Vect *getDest();
+
+    void setTarget(Entity &e);
+
+    Entity *getTarget();
 
     void setVelocity(Vect &velocity_a);
 

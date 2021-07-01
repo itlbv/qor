@@ -36,7 +36,15 @@ void Input::registerClickOnEntity() {
             selectOrClearEntity();
         }
     } else if (sdlEvent.button.button == SDL_BUTTON_RIGHT) {
-        assignMoveToToEntity();
+        Entity *clickedEntity = nullptr;
+        for (auto &e : Qor::entities) {
+            if (SDL_PointInRect(&mousePos, e->getRenderShape())) {
+                clickedEntity = e.get();
+            }
+        }
+        if (clickedEntity == nullptr)
+            assignMoveToBehavior();
+        else assignAttackBehavior(*clickedEntity);
     }
 }
 
@@ -49,7 +57,15 @@ void Input::selectOrClearEntity() {
     }
 }
 
-void Input::assignMoveToToEntity() {
+void Input::assignAttackBehavior(Entity &target_entity) {
+    if (selectedEntity != nullptr) {
+        ai::Ai::assignBehaviorToEntity(selectedEntity, "attack");
+        selectedEntity->setTarget(target_entity);
+        selectedEntity->setDest(util::screenToWorld(mousePos.x), util::screenToWorld(mousePos.y));
+    }
+}
+
+void Input::assignMoveToBehavior() {
     if (selectedEntity != nullptr) {
         ai::Ai::assignBehaviorToEntity(selectedEntity, "moveTo");
         selectedEntity->setDest(util::screenToWorld(mousePos.x), util::screenToWorld(mousePos.y));

@@ -21,7 +21,9 @@ private:
 
     static void selectOrClearEntity();
 
-    static void assignMoveToToEntity();
+    static void assignMoveToBehavior();
+
+    static void assignAttackBehavior(Entity &target_entity);
 
 public:
     static void processInput();

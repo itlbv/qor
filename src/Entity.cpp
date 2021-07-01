@@ -10,6 +10,7 @@ Entity::Entity(double a_x, double a_y)
     pos_->x = a_x;
     pos_->y = a_y;
     dest_ = std::make_unique<Vect>();
+    target = nullptr;
     velocity_ = std::make_unique<Vect>();
 }
 
@@ -26,10 +27,18 @@ Vect *Entity::getDest() {
     return dest_.get();
 }
 
+void Entity::setTarget(Entity &e) {
+}
+
+Entity *Entity::getTarget() {
+    return nullptr;
+}
+
 void Entity::setVelocity(Vect &velocity_a) {
     velocity_->x = velocity_a.x;
     velocity_->y = velocity_a.y;
 }
+
 
 Vect *Entity::getVelocity() {
     return velocity_.get();
