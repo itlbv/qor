@@ -36,15 +36,15 @@ void Input::registerClickOnEntity() {
             selectOrClearEntity();
         }
     } else if (sdlEvent.button.button == SDL_BUTTON_RIGHT) {
-        Entity *clickedEntity = nullptr;
-        for (auto &e : Qor::entities) {
+        std::shared_ptr<Entity> clickedEntity(nullptr);
+        for (const auto &e : Qor::entities) {
             if (SDL_PointInRect(&mousePos, e->getRenderShape())) {
-                clickedEntity = e.get();
+                clickedEntity = e;
             }
         }
         if (clickedEntity == nullptr)
             assignMoveToBehavior();
-        else assignAttackBehavior(*clickedEntity);
+        else assignAttackBehavior(clickedEntity);
     }
 }
 
@@ -57,7 +57,7 @@ void Input::selectOrClearEntity() {
     }
 }
 
-void Input::assignAttackBehavior(Entity &target_entity) {
+void Input::assignAttackBehavior(std::shared_ptr<Entity> target_entity) {
     if (selectedEntity != nullptr) {
         ai::Ai::assignBehaviorToEntity(selectedEntity, "attack");
         selectedEntity->setTarget(target_entity);

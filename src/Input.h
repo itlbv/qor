@@ -23,7 +23,7 @@ private:
 
     static void assignMoveToBehavior();
 
-    static void assignAttackBehavior(Entity &target_entity);
+    static void assignAttackBehavior(std::shared_ptr<Entity> target_entity);
 
 public:
     static void processInput();

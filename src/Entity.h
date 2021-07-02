@@ -7,10 +7,10 @@
 
 class Entity {
 private:
+    bool alive_;
     std::unique_ptr<SDL_Rect> renderShape_;
     std::unique_ptr<Vect> dest_;
-    std::shared_ptr<Entity> target;
-    bool alive_;
+    std::shared_ptr<Entity> target_;
 
 protected:
     std::unique_ptr<Vect> velocity_;
@@ -27,7 +27,7 @@ public:
 
     Vect *getDest();
 
-    void setTarget(Entity &e);
+    void setTarget(std::shared_ptr<Entity> e);
 
     Entity *getTarget();
 
@@ -35,7 +35,7 @@ public:
 
     Vect *getVelocity();
 
-    bool isAlive();
+    [[nodiscard]] bool isAlive() const;
 };
 
 #endif //QOR_ENTITY_H

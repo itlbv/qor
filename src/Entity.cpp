@@ -10,7 +10,7 @@ Entity::Entity(double a_x, double a_y)
     pos_->x = a_x;
     pos_->y = a_y;
     dest_ = std::make_unique<Vect>();
-    target = nullptr;
+    target_ = nullptr;
     velocity_ = std::make_unique<Vect>();
 }
 
@@ -27,11 +27,12 @@ Vect *Entity::getDest() {
     return dest_.get();
 }
 
-void Entity::setTarget(Entity &e) {
+void Entity::setTarget(std::shared_ptr<Entity> e) {
+    target_ = std::move(e);
 }
 
 Entity *Entity::getTarget() {
-    return nullptr;
+    return target_.get();
 }
 
 void Entity::setVelocity(Vect &velocity_a) {
@@ -44,6 +45,6 @@ Vect *Entity::getVelocity() {
     return velocity_.get();
 }
 
-bool Entity::isAlive() {
+bool Entity::isAlive() const {
     return alive_;
 }
