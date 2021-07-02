@@ -1,6 +1,7 @@
 #include "Sequence.h"
 #include "tasks/MoveTo.h"
 #include "checks/IsTargetAlive.h"
+#include "Selector.h"
 
 namespace btree {
     Sequence::Sequence()
@@ -18,11 +19,11 @@ namespace btree {
                 continue;
             else return FAILURE;
         }
-        return RUNNING;
+        return SUCCESS;
     }
 
     void Sequence::buildAttackSequence() {
         children_.push_back(std::make_unique<IsTargetAlive>());
-        children_.push_back(std::make_unique<MoveTo>());
+        children_.push_back(std::make_unique<Selector>());
     }
 }

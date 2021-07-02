@@ -7,12 +7,13 @@ namespace btree {
     class Sequence : public Node {
     private:
         std::vector<std::unique_ptr<Node>> children_;
+
+        void buildAttackSequence();
+
     public:
         Sequence();
 
         Status run(Entity &e) override;
-
-        void buildAttackSequence();
     };
 }
 
