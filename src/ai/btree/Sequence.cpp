@@ -2,6 +2,7 @@
 #include "tasks/MoveTo.h"
 #include "checks/IsTargetAlive.h"
 #include "Selector.h"
+#include "tasks/Fight.h"
 
 namespace btree {
     Sequence::Sequence()
@@ -25,5 +26,6 @@ namespace btree {
     void Sequence::buildAttackSequence() {
         children_.push_back(std::make_unique<IsTargetAlive>());
         children_.push_back(std::make_unique<Selector>());
+        children_.push_back(std::make_unique<Fight>());
     }
 }

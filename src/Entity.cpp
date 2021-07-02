@@ -14,6 +14,10 @@ Entity::Entity(double a_x, double a_y)
     velocity_ = std::make_unique<Vect>();
 }
 
+void Entity::defend() {
+    alive_ = false;
+}
+
 SDL_Rect *Entity::getRenderShape() {
     return renderShape_.get();
 }
@@ -35,11 +39,11 @@ Entity *Entity::getTarget() {
     return target_.get();
 }
 
+
 void Entity::setVelocity(Vect &velocity_a) {
     velocity_->x = velocity_a.x;
     velocity_->y = velocity_a.y;
 }
-
 
 Vect *Entity::getVelocity() {
     return velocity_.get();

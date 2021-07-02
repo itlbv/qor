@@ -21,6 +21,8 @@ public:
 
     Entity(double a_x, double a_y);
 
+    void defend();
+
     SDL_Rect *getRenderShape();
 
     void setDest(double a_x, double a_y);
