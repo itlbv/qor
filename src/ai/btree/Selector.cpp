@@ -3,7 +3,7 @@
 #include "tasks/MoveTo.h"
 
 namespace btree {
-    Selector::Selector() : Node() {
+    Selector::Selector() : BTreeNode() {
         buildGoToTargetSelector();
     }
 

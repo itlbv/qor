@@ -6,7 +6,7 @@
 
 namespace btree {
     Sequence::Sequence()
-            : Node() {
+            : BTreeNode() {
         buildAttackSequence();
     }
 

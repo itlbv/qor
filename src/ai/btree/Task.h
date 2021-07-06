@@ -1,11 +1,11 @@
 #ifndef QOR_TASK_H
 #define QOR_TASK_H
 
-#include "Node.h"
+#include "BTreeNode.h"
 #include "../../Entity.h"
 
 namespace btree {
-    class Task : public Node {
+    class Task : public BTreeNode {
     public:
         Task();
 

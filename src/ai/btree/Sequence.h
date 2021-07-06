@@ -4,9 +4,9 @@
 #include "Composite.h"
 
 namespace btree {
-    class Sequence : public Node {
+    class Sequence : public BTreeNode {
     private:
-        std::vector<std::unique_ptr<Node>> children_;
+        std::vector<std::unique_ptr<BTreeNode>> children_;
 
         void buildAttackSequence();
 

@@ -1,15 +1,15 @@
 #ifndef QOR_BEHAVIOR_H
 #define QOR_BEHAVIOR_H
 
-#include "Node.h"
+#include "BTreeNode.h"
 #include "../../Entity.h"
 
 namespace btree {
     class Behavior {
     private:
-        Node *_root;
+        BTreeNode *_root;
     public:
-        explicit Behavior(Node *a_root);
+        explicit Behavior(BTreeNode *a_root);
 
         Status run(Entity &e);
     };

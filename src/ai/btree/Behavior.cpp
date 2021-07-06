@@ -1,7 +1,7 @@
 #include "Behavior.h"
 
 namespace btree {
-    Behavior::Behavior(Node *a_root)
+    Behavior::Behavior(BTreeNode *a_root)
             : _root(a_root) {}
 
     Status Behavior::run(Entity &e) {

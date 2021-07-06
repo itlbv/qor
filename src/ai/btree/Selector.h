@@ -5,12 +5,12 @@
 #include <memory>
 #include <vector>
 #include "../../Entity.h"
-#include "Node.h"
+#include "BTreeNode.h"
 
 namespace btree {
-    class Selector : public Node {
+    class Selector : public BTreeNode {
     private:
-        std::vector<std::unique_ptr<Node>> children_;
+        std::vector<std::unique_ptr<BTreeNode>> children_;
 
         void buildGoToTargetSelector();
 
