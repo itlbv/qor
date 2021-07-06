@@ -5,6 +5,9 @@
 
 namespace btree {
     class Fight : public Task {
+    private:
+        static Uint32 callback(Uint32 interval, void *param);
+
     public:
         Status run(Entity &e) override;
     };
