@@ -1,14 +1,14 @@
 #ifndef QOR_ISTARGETALIVE_H
 #define QOR_ISTARGETALIVE_H
 
-#include "../Status.h"
+#include "../BTreeStatus.h"
 #include "../../../Entity.h"
-#include "../Task.h"
+#include "../BTreeTask.h"
 
 namespace btree {
-    class IsTargetAlive : public Task {
+    class IsTargetAlive : public BTreeTask {
     public:
-        Status run(Entity &e) override {
+        BTreeStatus run(Entity &e) override {
             if (e.isAlive())
                 return SUCCESS;
             else return FAILURE;

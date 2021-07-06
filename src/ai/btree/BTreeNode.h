@@ -1,13 +1,13 @@
 #ifndef QOR_BTREENODE_H
 #define QOR_BTREENODE_H
 
-#include "Status.h"
+#include "BTreeStatus.h"
 #include "../../Entity.h"
 
 namespace btree {
     class BTreeNode {
     public:
-        virtual Status run(Entity &e) = 0;
+        virtual BTreeStatus run(Entity &e) = 0;
     };
 }
 

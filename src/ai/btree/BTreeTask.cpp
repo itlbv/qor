@@ -1,10 +1,10 @@
-#include "Task.h"
+#include "BTreeTask.h"
 #include "../../Qor.h"
 
 namespace btree {
-    Task::Task() = default;
+    BTreeTask::BTreeTask() = default;
 
-    Status Task::run(Entity &e) {
+    BTreeStatus BTreeTask::run(Entity &e) {
         Qor::entities[0]->pos_->x++;
         return RUNNING;
     }

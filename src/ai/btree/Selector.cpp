@@ -7,9 +7,9 @@ namespace btree {
         buildGoToTargetSelector();
     }
 
-    Status Selector::run(Entity &e) {
+    BTreeStatus Selector::run(Entity &e) {
         for (auto &child : children_) {
-            Status status = child->run(e);
+            BTreeStatus status = child->run(e);
 
             if (status == RUNNING)
                 return RUNNING;

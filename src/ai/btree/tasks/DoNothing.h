@@ -2,12 +2,12 @@
 #define QOR_DONOTHING_H
 
 #include "../../../Entity.h"
-#include "../Task.h"
+#include "../BTreeTask.h"
 
 namespace btree {
-    class DoNothing : public Task {
+    class DoNothing : public BTreeTask {
     public:
-        Status run(Entity &e) override;
+        BTreeStatus run(Entity &e) override;
     };
 }
 

@@ -10,9 +10,9 @@ namespace btree {
         buildAttackSequence();
     }
 
-    Status Sequence::run(Entity &e) {
+    BTreeStatus Sequence::run(Entity &e) {
         for (auto &child : children_) {
-            Status status = child->run(e);
+            BTreeStatus status = child->run(e);
 
             if (status == RUNNING)
                 return RUNNING;

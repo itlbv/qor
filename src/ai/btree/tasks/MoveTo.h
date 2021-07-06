@@ -2,10 +2,10 @@
 #define QOR_MOVETO_H
 
 #include "../../../Entity.h"
-#include "../Task.h"
+#include "../BTreeTask.h"
 
 namespace btree {
-    class MoveTo : public Task {
+    class MoveTo : public BTreeTask {
     private:
         static const double DestinationReachedThreshold;
         static const double Speed;
@@ -18,7 +18,7 @@ namespace btree {
         static bool destinationReached(Entity &e);
 
     public:
-        Status run(Entity &e) override;
+        BTreeStatus run(Entity &e) override;
     };
 }
 

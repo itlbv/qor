@@ -1,15 +1,15 @@
 #ifndef QOR_FIGHT_H
 #define QOR_FIGHT_H
 
-#include "../Task.h"
+#include "../BTreeTask.h"
 
 namespace btree {
-    class Fight : public Task {
+    class Fight : public BTreeTask {
     private:
         static Uint32 callback(Uint32 interval, void *param);
 
     public:
-        Status run(Entity &e) override;
+        BTreeStatus run(Entity &e) override;
     };
 }
 

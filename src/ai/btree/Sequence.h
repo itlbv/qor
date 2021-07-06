@@ -1,7 +1,8 @@
 #ifndef QOR_SEQUENCE_H
 #define QOR_SEQUENCE_H
 
-#include "Composite.h"
+#include <vector>
+#include "BTreeNode.h"
 
 namespace btree {
     class Sequence : public BTreeNode {
@@ -13,7 +14,7 @@ namespace btree {
     public:
         Sequence();
 
-        Status run(Entity &e) override;
+        BTreeStatus run(Entity &e) override;
     };
 }
 

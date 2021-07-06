@@ -1,14 +1,14 @@
 #ifndef QOR_ISTARGETCLOSE_H
 #define QOR_ISTARGETCLOSE_H
 
-#include "../Task.h"
+#include "../BTreeTask.h"
 
 #define CLOSE_DISTANCE 1.5
 
 namespace btree {
-    class IsTargetClose : public Task {
+    class IsTargetClose : public BTreeTask {
     public:
-        Status run(Entity &e) override {
+        BTreeStatus run(Entity &e) override {
             if (e.pos_->distanceTo(*(e.getTarget())->pos_) < CLOSE_DISTANCE)
                 return SUCCESS;
             else return FAILURE;

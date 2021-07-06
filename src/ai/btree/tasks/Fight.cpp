@@ -1,7 +1,7 @@
 #include "Fight.h"
 
 namespace btree {
-    Status Fight::run(Entity &e) {
+    BTreeStatus Fight::run(Entity &e) {
         SDL_TimerID attackTimer = SDL_AddTimer(1 * 1000, callback, &e);
         return RUNNING;
     }

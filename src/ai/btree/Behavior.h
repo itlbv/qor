@@ -11,7 +11,7 @@ namespace btree {
     public:
         explicit Behavior(BTreeNode *a_root);
 
-        Status run(Entity &e);
+        BTreeStatus run(Entity &e);
     };
 }
 

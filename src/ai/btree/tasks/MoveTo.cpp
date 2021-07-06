@@ -6,7 +6,7 @@ namespace btree {
     const double MoveTo::Speed = 5;
     Vect MoveTo::velocity_;
 
-    Status MoveTo::run(Entity &e) {
+    BTreeStatus MoveTo::run(Entity &e) {
         move(e);
         checkCollisions(e);
 

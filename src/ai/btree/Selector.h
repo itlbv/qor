@@ -17,7 +17,7 @@ namespace btree {
     public:
         Selector();
 
-        Status run(Entity &e) override;
+        BTreeStatus run(Entity &e) override;
     };
 }
 
