@@ -1,5 +1,4 @@
-#ifndef QOR_INPUT_H
-#define QOR_INPUT_H
+#pragma once
 
 #include <SDL.h>
 #include "Entity.h"
@@ -28,6 +27,3 @@ private:
 public:
     static void processInput();
 };
-
-
-#endif //QOR_INPUT_H

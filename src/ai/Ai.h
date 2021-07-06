@@ -1,5 +1,4 @@
-#ifndef QOR_AI_H
-#define QOR_AI_H
+#pragma once
 
 #include <map>
 #include "../Entity.h"
@@ -20,5 +19,3 @@ namespace ai {
         static void assignBehaviorToEntity(Entity *entity, const char *behavior);
     };
 }
-
-#endif //QOR_AI_H

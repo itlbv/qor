@@ -1,5 +1,4 @@
-#ifndef QOR_ISTARGETCLOSE_H
-#define QOR_ISTARGETCLOSE_H
+#pragma once
 
 #include "../BTreeTask.h"
 
@@ -13,5 +12,3 @@ public:
         else return FAILURE;
     };
 };
-
-#endif //QOR_ISTARGETCLOSE_H

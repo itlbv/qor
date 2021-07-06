@@ -1,5 +1,4 @@
-#ifndef QOR_RENDERWINDOW_H
-#define QOR_RENDERWINDOW_H
+#pragma once
 
 #include <SDL.h>
 #include "Viewport.h"
@@ -29,6 +28,3 @@ public:
 
     void renderEntity(Entity &e);
 };
-
-
-#endif //QOR_RENDERWINDOW_H

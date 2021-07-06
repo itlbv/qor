@@ -1,6 +1,4 @@
-#ifndef QOR_SELECTOR_H
-#define QOR_SELECTOR_H
-
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -18,5 +16,3 @@ public:
 
     BTreeStatus run(Entity &e) override;
 };
-
-#endif //QOR_SELECTOR_H

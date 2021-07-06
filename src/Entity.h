@@ -1,5 +1,4 @@
-#ifndef QOR_ENTITY_H
-#define QOR_ENTITY_H
+#pragma once
 
 #include <SDL.h>
 #include <memory>
@@ -39,5 +38,3 @@ public:
 
     [[nodiscard]] bool isAlive() const;
 };
-
-#endif //QOR_ENTITY_H

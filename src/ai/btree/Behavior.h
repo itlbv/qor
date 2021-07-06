@@ -1,5 +1,4 @@
-#ifndef QOR_BEHAVIOR_H
-#define QOR_BEHAVIOR_H
+#pragma once
 
 #include "BTreeNode.h"
 #include "../../Entity.h"
@@ -12,5 +11,3 @@ public:
 
     BTreeStatus run(Entity &e);
 };
-
-#endif //QOR_BEHAVIOR_H

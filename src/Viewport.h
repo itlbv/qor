@@ -1,6 +1,4 @@
-#ifndef QOR_VIEWPORT_H
-#define QOR_VIEWPORT_H
-
+#pragma once
 
 #include <SDL.h>
 
@@ -12,6 +10,3 @@ public:
 
     SDL_Rect *getViewportRect();
 };
-
-
-#endif //QOR_VIEWPORT_H

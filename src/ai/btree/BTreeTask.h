@@ -1,5 +1,4 @@
-#ifndef QOR_BTREETASK_H
-#define QOR_BTREETASK_H
+#pragma once
 
 #include "BTreeNode.h"
 #include "../../Entity.h"
@@ -10,5 +9,3 @@ public:
 
     BTreeStatus run(Entity &e) override;
 };
-
-#endif //QOR_BTREETASK_H

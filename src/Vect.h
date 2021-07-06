@@ -1,5 +1,4 @@
-#ifndef QOR_VECT_H
-#define QOR_VECT_H
+#pragma once
 
 #include <cmath>
 
@@ -56,5 +55,3 @@ struct Vect {
         y = y_a;
     }
 };
-
-#endif //QOR_VECT_H

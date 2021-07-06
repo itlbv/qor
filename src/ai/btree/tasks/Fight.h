@@ -1,5 +1,4 @@
-#ifndef QOR_FIGHT_H
-#define QOR_FIGHT_H
+#pragma once
 
 #include "../BTreeTask.h"
 
@@ -10,5 +9,3 @@ private:
 public:
     BTreeStatus run(Entity &e) override;
 };
-
-#endif //QOR_FIGHT_H

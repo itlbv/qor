@@ -1,5 +1,4 @@
-#ifndef QOR_SEQUENCE_H
-#define QOR_SEQUENCE_H
+#pragma once
 
 #include <vector>
 #include "BTreeNode.h"
@@ -15,5 +14,3 @@ public:
 
     BTreeStatus run(Entity &e) override;
 };
-
-#endif //QOR_SEQUENCE_H

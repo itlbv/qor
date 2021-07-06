@@ -1,6 +1,4 @@
-#ifndef QOR_TIMER_H
-#define QOR_TIMER_H
-
+#pragma once
 
 class Timer {
 private:
@@ -11,6 +9,3 @@ public:
 
     [[nodiscard]] unsigned int getTimePassed() const;
 };
-
-
-#endif //QOR_TIMER_H

@@ -1,5 +1,4 @@
-#ifndef QOR_MOVETO_H
-#define QOR_MOVETO_H
+#pragma once
 
 #include "../../../Entity.h"
 #include "../BTreeTask.h"
@@ -19,5 +18,3 @@ private:
 public:
     BTreeStatus run(Entity &e) override;
 };
-
-#endif //QOR_MOVETO_H

@@ -1,5 +1,4 @@
-#ifndef QOR_BEHAVIORTREES_H
-#define QOR_BEHAVIORTREES_H
+#pragma once
 
 #include <map>
 #include "Behavior.h"
@@ -11,5 +10,3 @@ public:
 
     static void initBehaviors();
 };
-
-#endif //QOR_BEHAVIORTREES_H

@@ -1,5 +1,4 @@
-#ifndef QOR_ISTARGETALIVE_H
-#define QOR_ISTARGETALIVE_H
+#pragma once
 
 #include "../BTreeStatus.h"
 #include "../../../Entity.h"
@@ -13,5 +12,3 @@ public:
         else return FAILURE;
     };
 };
-
-#endif //QOR_ISTARGETALIVE_H

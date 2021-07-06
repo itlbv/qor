@@ -1,6 +1,4 @@
-#ifndef QOR_PLAYER_H
-#define QOR_PLAYER_H
-
+#pragma once
 
 #include "Entity.h"
 
@@ -17,6 +15,3 @@ public:
 
     void checkCollisions();
 };
-
-
-#endif //QOR_PLAYER_H

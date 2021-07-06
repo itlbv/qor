@@ -1,6 +1,4 @@
-#ifndef QOR_QOR_H
-#define QOR_QOR_H
-
+#pragma once
 
 #include <vector>
 #include "RenderWindow.h"
@@ -30,6 +28,3 @@ public:
 
     void run(unsigned int deltaTime);
 };
-
-
-#endif //QOR_QOR_H
