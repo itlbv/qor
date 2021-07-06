@@ -4,13 +4,11 @@
 #include "BTreeNode.h"
 #include "../../Entity.h"
 
-namespace btree {
-    class BTreeTask : public BTreeNode {
-    public:
-        BTreeTask();
+class BTreeTask : public BTreeNode {
+public:
+    BTreeTask();
 
-        BTreeStatus run(Entity &e) override;
-    };
-}
+    BTreeStatus run(Entity &e) override;
+};
 
 #endif //QOR_BTREETASK_H

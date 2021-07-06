@@ -5,13 +5,11 @@
 #include "Behavior.h"
 #include "../../Entity.h"
 
-namespace btree {
-    class BehaviorTrees {
-    public:
-        static std::map<std::string, std::shared_ptr<Behavior>> behaviors;
+class BehaviorTrees {
+public:
+    static std::map<std::string, std::shared_ptr<Behavior>> behaviors;
 
-        static void initBehaviors();
-    };
-}
+    static void initBehaviors();
+};
 
 #endif //QOR_BEHAVIORTREES_H

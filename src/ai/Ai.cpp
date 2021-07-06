@@ -3,7 +3,7 @@
 #include "btree/BehaviorTrees.h"
 
 namespace ai {
-    std::map<std::shared_ptr<Entity>, std::shared_ptr<btree::Behavior>> Ai::entitiesBehaviors;
+    std::map<std::shared_ptr<Entity>, std::shared_ptr<Behavior>> Ai::entitiesBehaviors;
 
     void ai::Ai::run() {
         assignDefaultBehaviorToNewEntities();
@@ -13,8 +13,8 @@ namespace ai {
         }
     }
 
-    void Ai::runBehavior(const std::pair<std::shared_ptr<Entity> const, std::shared_ptr<btree::Behavior>> &eb) {
-        if (eb.second->run(*eb.first) != btree::RUNNING)
+    void Ai::runBehavior(const std::pair<std::shared_ptr<Entity> const, std::shared_ptr<Behavior>> &eb) {
+        if (eb.second->run(*eb.first) != RUNNING)
             assignBehaviorToEntity(eb.first.get(), "doNothing");
     }
 
@@ -22,14 +22,14 @@ namespace ai {
         for (auto &e : Qor::entities) {
             auto it = entitiesBehaviors.find(e);
             if (it == entitiesBehaviors.end())
-                entitiesBehaviors.insert(std::make_pair(e, btree::BehaviorTrees::behaviors["doNothing"]));
+                entitiesBehaviors.insert(std::make_pair(e, BehaviorTrees::behaviors["doNothing"]));
         }
     }
 
     void Ai::assignBehaviorToEntity(Entity *a_e, const char *behavior) {
         for (auto &eb : entitiesBehaviors) {
             if (eb.first.get() == a_e)
-                eb.second = btree::BehaviorTrees::behaviors[behavior];
+                eb.second = BehaviorTrees::behaviors[behavior];
         }
     }
 }

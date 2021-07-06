@@ -4,18 +4,16 @@
 #include <vector>
 #include "BTreeNode.h"
 
-namespace btree {
-    class Sequence : public BTreeNode {
-    private:
-        std::vector<std::unique_ptr<BTreeNode>> children_;
+class Sequence : public BTreeNode {
+private:
+    std::vector<std::unique_ptr<BTreeNode>> children_;
 
-        void buildAttackSequence();
+    void buildAttackSequence();
 
-    public:
-        Sequence();
+public:
+    Sequence();
 
-        BTreeStatus run(Entity &e) override;
-    };
-}
+    BTreeStatus run(Entity &e) override;
+};
 
 #endif //QOR_SEQUENCE_H

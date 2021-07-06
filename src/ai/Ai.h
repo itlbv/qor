@@ -9,11 +9,11 @@ namespace ai {
     class Ai {
     private:
     public:
-        static std::map<std::shared_ptr<Entity>, std::shared_ptr<btree::Behavior>> entitiesBehaviors;
+        static std::map<std::shared_ptr<Entity>, std::shared_ptr<Behavior>> entitiesBehaviors;
 
         static void run();
 
-        static void runBehavior(const std::pair<std::shared_ptr<Entity> const, std::shared_ptr<btree::Behavior>> &eb);
+        static void runBehavior(const std::pair<std::shared_ptr<Entity> const, std::shared_ptr<Behavior>> &eb);
 
         static void assignDefaultBehaviorToNewEntities();
 

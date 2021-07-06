@@ -4,11 +4,9 @@
 #include "BTreeStatus.h"
 #include "../../Entity.h"
 
-namespace btree {
-    class BTreeNode {
-    public:
-        virtual BTreeStatus run(Entity &e) = 0;
-    };
-}
+class BTreeNode {
+public:
+    virtual BTreeStatus run(Entity &e) = 0;
+};
 
 #endif //QOR_BTREENODE_H

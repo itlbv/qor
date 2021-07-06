@@ -6,7 +6,7 @@
 #define MILLISECONDS_PER_FRAME 16
 
 void initStatic() {
-    btree::BehaviorTrees::initBehaviors();
+    BehaviorTrees::initBehaviors();
 }
 
 int main(int argc, char *argv[]) {

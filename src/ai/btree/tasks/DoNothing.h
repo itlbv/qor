@@ -4,11 +4,9 @@
 #include "../../../Entity.h"
 #include "../BTreeTask.h"
 
-namespace btree {
-    class DoNothing : public BTreeTask {
-    public:
-        BTreeStatus run(Entity &e) override;
-    };
-}
+class DoNothing : public BTreeTask {
+public:
+    BTreeStatus run(Entity &e) override;
+};
 
 #endif //QOR_DONOTHING_H

@@ -4,15 +4,13 @@
 #include "BTreeNode.h"
 #include "../../Entity.h"
 
-namespace btree {
-    class Behavior {
-    private:
-        BTreeNode *_root;
-    public:
-        explicit Behavior(BTreeNode *a_root);
+class Behavior {
+private:
+    BTreeNode *_root;
+public:
+    explicit Behavior(BTreeNode *a_root);
 
-        BTreeStatus run(Entity &e);
-    };
-}
+    BTreeStatus run(Entity &e);
+};
 
 #endif //QOR_BEHAVIOR_H

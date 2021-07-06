@@ -1,7 +1,5 @@
 #include "DoNothing.h"
 
-namespace btree {
-    BTreeStatus DoNothing::run(Entity &e) {
-        return RUNNING;
-    }
+BTreeStatus DoNothing::run(Entity &e) {
+    return RUNNING;
 }

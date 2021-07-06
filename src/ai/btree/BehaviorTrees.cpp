@@ -3,12 +3,10 @@
 #include "tasks/DoNothing.h"
 #include "Sequence.h"
 
-namespace btree {
-    std::map<std::string, std::shared_ptr<Behavior>> BehaviorTrees::behaviors;
+std::map<std::string, std::shared_ptr<Behavior>> BehaviorTrees::behaviors;
 
-    void BehaviorTrees::initBehaviors() {
-        behaviors.insert(std::make_pair("moveTo", std::make_shared<Behavior>(new MoveTo())));
-        behaviors.insert(std::make_pair("doNothing", std::make_shared<Behavior>(new DoNothing())));
-        behaviors.insert(std::make_pair("attack", std::make_shared<Behavior>(new Sequence())));
-    }
+void BehaviorTrees::initBehaviors() {
+    behaviors.insert(std::make_pair("moveTo", std::make_shared<Behavior>(new MoveTo())));
+    behaviors.insert(std::make_pair("doNothing", std::make_shared<Behavior>(new DoNothing())));
+    behaviors.insert(std::make_pair("attack", std::make_shared<Behavior>(new Sequence())));
 }

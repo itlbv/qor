@@ -7,18 +7,16 @@
 #include "../../Entity.h"
 #include "BTreeNode.h"
 
-namespace btree {
-    class Selector : public BTreeNode {
-    private:
-        std::vector<std::unique_ptr<BTreeNode>> children_;
+class Selector : public BTreeNode {
+private:
+    std::vector<std::unique_ptr<BTreeNode>> children_;
 
-        void buildGoToTargetSelector();
+    void buildGoToTargetSelector();
 
-    public:
-        Selector();
+public:
+    Selector();
 
-        BTreeStatus run(Entity &e) override;
-    };
-}
+    BTreeStatus run(Entity &e) override;
+};
 
 #endif //QOR_SELECTOR_H
