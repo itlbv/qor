@@ -3,10 +3,13 @@
 #include "tasks/DoNothing.h"
 #include "Sequence.h"
 
-std::map<std::string, std::shared_ptr<Behavior>> BehaviorTrees::behaviors;
+std::unique_ptr<Behavior> BehaviorTrees::getNewBehavior(const std::string &behavior_name) {
+    if (behavior_name == "do_nothing")
+        return std::move(std::make_unique<Behavior>(new DoNothing()));
+    else if (behavior_name == "move_to")
+        return std::move(std::make_unique<Behavior>(new MoveTo()));
+    else if (behavior_name == "attack")
+        return std::move(std::make_unique<Behavior>(new Sequence()));
 
-void BehaviorTrees::initBehaviors() {
-    behaviors.insert(std::make_pair("moveTo", std::make_shared<Behavior>(new MoveTo())));
-    behaviors.insert(std::make_pair("doNothing", std::make_shared<Behavior>(new DoNothing())));
-    behaviors.insert(std::make_pair("attack", std::make_shared<Behavior>(new Sequence())));
+    return std::move(std::make_unique<Behavior>(new DoNothing()));
 }

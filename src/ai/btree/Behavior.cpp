@@ -1,8 +1,8 @@
 #include "Behavior.h"
 
-Behavior::Behavior(BTreeNode *a_root)
-        : _root(a_root) {}
+Behavior::Behavior(BTreeNode *root_a)
+        : root_(root_a) {}
 
 BTreeStatus Behavior::run(Entity &e) {
-    return _root->run(e);
+    return root_->run(e);
 }

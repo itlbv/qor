@@ -6,7 +6,5 @@
 
 class BehaviorTrees {
 public:
-    static std::map<std::string, std::shared_ptr<Behavior>> behaviors;
-
-    static void initBehaviors();
+    static std::unique_ptr<Behavior> getNewBehavior(const std::string &behavior_name);
 };

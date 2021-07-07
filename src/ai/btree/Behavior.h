@@ -3,11 +3,15 @@
 #include "BTreeNode.h"
 #include "../../Entity.h"
 
+class Entity;
+
+class BTreeNode;
+
 class Behavior {
 private:
-    BTreeNode *_root;
+    BTreeNode *root_;
 public:
-    explicit Behavior(BTreeNode *a_root);
+    explicit Behavior(BTreeNode *root_a);
 
     BTreeStatus run(Entity &e);
 };

@@ -5,15 +5,9 @@
 
 #define MILLISECONDS_PER_FRAME 16
 
-void initStatic() {
-    BehaviorTrees::initBehaviors();
-}
-
 int main(int argc, char *argv[]) {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) < 0)
         std::cout << "SDL_Init FAILED. Error: " << SDL_GetError() << std::endl;
-
-    initStatic();
 
     Qor qor;
     unsigned int deltaTime, prevFrameTime = 0;

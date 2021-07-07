@@ -27,4 +27,6 @@ public:
     Qor();
 
     void run(unsigned int deltaTime);
+
+    void updateEntities();
 };

@@ -57,19 +57,16 @@ void Input::selectOrClearEntity() {
     }
 }
 
-void Input::assignAttackBehavior(std::shared_ptr<Entity> target_entity) {
-    if (selectedEntity != nullptr) {
-        ai::Ai::assignBehaviorToEntity(selectedEntity, "attack");
-        selectedEntity->setTarget(target_entity);
-        selectedEntity->setDest(util::screenToWorld(mousePos.x), util::screenToWorld(mousePos.y));
-    }
+void Input::assignAttackBehavior(const std::shared_ptr<Entity> &target_entity) {
+    if (selectedEntity != nullptr)
+        Ai::assignAttackBehaviorToEntity(*selectedEntity, target_entity);
 }
 
 void Input::assignMoveToBehavior() {
-    if (selectedEntity != nullptr) {
-        ai::Ai::assignBehaviorToEntity(selectedEntity, "moveTo");
-        selectedEntity->setDest(util::screenToWorld(mousePos.x), util::screenToWorld(mousePos.y));
-    }
+    if (selectedEntity != nullptr)
+        Ai::assignMoveToBehaviorToEntity(*selectedEntity,
+                                         util::screenToWorld(mousePos.x),
+                                         util::screenToWorld(mousePos.y));
 }
 
 void Input::registerPlayerVelocity() {

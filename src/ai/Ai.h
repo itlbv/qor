@@ -4,18 +4,14 @@
 #include "../Entity.h"
 #include "btree/Behavior.h"
 
-namespace ai {
-    class Ai {
-    private:
-    public:
-        static std::map<std::shared_ptr<Entity>, std::shared_ptr<Behavior>> entitiesBehaviors;
+class Ai {
+private:
+public:
+    static std::map<std::shared_ptr<Entity>, std::shared_ptr<Behavior>> entitiesBehaviors;
 
-        static void run();
+    static std::unique_ptr<Behavior> getDefaultBehavior();
 
-        static void runBehavior(const std::pair<std::shared_ptr<Entity> const, std::shared_ptr<Behavior>> &eb);
+    static void assignAttackBehaviorToEntity(Entity &e, const std::shared_ptr<Entity> &target);
 
-        static void assignDefaultBehaviorToNewEntities();
-
-        static void assignBehaviorToEntity(Entity *entity, const char *behavior);
-    };
-}
+    static void assignMoveToBehaviorToEntity(Entity &e, double x, double y);
+};

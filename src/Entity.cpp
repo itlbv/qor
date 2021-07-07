@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "ai/Ai.h"
 
 #define ENTITY_BODY_RADIUS 0.49
 
@@ -12,10 +13,20 @@ Entity::Entity(double a_x, double a_y)
     dest_ = std::make_unique<Vect>();
     target_ = nullptr;
     velocity_ = std::make_unique<Vect>();
+    behavior_ = Ai::getDefaultBehavior();
+}
+
+void Entity::update() {
+    if (behavior_->run(*this) != RUNNING)
+        setBehavior(Ai::getDefaultBehavior());
 }
 
 void Entity::defend() {
     alive_ = false;
+}
+
+void Entity::setBehavior(std::unique_ptr<Behavior> behavior_a) {
+    behavior_ = std::move(behavior_a);
 }
 
 SDL_Rect *Entity::getRenderShape() {
@@ -31,6 +42,7 @@ Vect *Entity::getDest() {
     return dest_.get();
 }
 
+
 void Entity::setTarget(std::shared_ptr<Entity> e) {
     target_ = std::move(e);
 }
@@ -38,7 +50,6 @@ void Entity::setTarget(std::shared_ptr<Entity> e) {
 Entity *Entity::getTarget() {
     return target_.get();
 }
-
 
 void Entity::setVelocity(Vect &velocity_a) {
     velocity_->x = velocity_a.x;
