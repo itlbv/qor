@@ -1,13 +1,13 @@
 #include <iostream>
 #include <SDL.h>
 #include "Qor.h"
-#include "ai/btree/BehaviorTrees.h"
+#include "Logger.h"
 
 #define MILLISECONDS_PER_FRAME 16
 
 int main(int argc, char *argv[]) {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) < 0)
-        std::cout << "SDL_Init FAILED. Error: " << SDL_GetError() << std::endl;
+        Logger::log(std::string("SDL_Init FAILED. Error: ") + SDL_GetError());
 
     Qor qor;
     unsigned int deltaTime, prevFrameTime = 0;
