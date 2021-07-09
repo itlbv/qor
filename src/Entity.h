@@ -19,10 +19,11 @@ protected:
     std::unique_ptr<Vect> velocity_;
 
 public:
+    int id_;
     std::unique_ptr<Vect> pos_;
     const double radius_;
 
-    Entity(double a_x, double a_y);
+    Entity(int id_a, double x_a, double y_a);
 
     void update();
 

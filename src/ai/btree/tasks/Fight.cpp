@@ -21,6 +21,6 @@ BTreeStatus Fight::run(Entity &e) {
 }
 
 void Fight::hitTarget(Entity &e) {
-    Logger::log("hit target");
+    Logger::log("hit target", e);
     e.getTarget()->defend();
 }

@@ -4,7 +4,7 @@
 const double Player::Speed = 7;
 
 Player::Player(double x_a, double y_a)
-        : Entity(x_a, y_a) {}
+        : Entity(999, x_a, y_a) {}
 
 void Player::update() {
     move();
