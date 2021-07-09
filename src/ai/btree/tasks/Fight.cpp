@@ -1,12 +1,26 @@
 #include "Fight.h"
+#include "../../../Logger.h"
+
+const Uint32 Fight::AttackDelay = 2000;
 
 BTreeStatus Fight::run(Entity &e) {
-    SDL_TimerID attackTimer = SDL_AddTimer(1 * 1000, callback, &e);
+    if (!init_) {
+        init_ = true;
+        attack_time_ = SDL_GetTicks();
+        hitTarget(e);
+    }
+
+    if (SDL_GetTicks() - attack_time_ < AttackDelay) {
+        return RUNNING;
+    } else {
+        attack_time_ = SDL_GetTicks();
+        hitTarget(e);
+    }
+
     return RUNNING;
 }
 
-Uint32 Fight::callback(Uint32 interval, void *param) {
-    auto e = (Entity *) param;
-    e->getTarget()->defend();
-    return 0;
+void Fight::hitTarget(Entity &e) {
+    Logger::log("hit target");
+    e.getTarget()->defend();
 }

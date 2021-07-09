@@ -4,7 +4,11 @@
 
 class Fight : public BTreeTask {
 private:
-    static Uint32 callback(Uint32 interval, void *param);
+    static const Uint32 AttackDelay;
+    bool init_ = false;
+    Uint32 attack_time_ = 0;
+
+    static void hitTarget(Entity &e);
 
 public:
     BTreeStatus run(Entity &e) override;

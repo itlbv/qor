@@ -6,7 +6,7 @@
 #define MILLISECONDS_PER_FRAME 16
 
 int main(int argc, char *argv[]) {
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) < 0)
+    if (SDL_Init(SDL_INIT_VIDEO) < 0)
         Logger::log(std::string("SDL_Init FAILED. Error: ") + SDL_GetError());
 
     Qor qor;
