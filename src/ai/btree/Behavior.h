@@ -9,9 +9,12 @@ class BTreeNode;
 
 class Behavior {
 private:
+    const char *name_;
     BTreeNode *root_;
 public:
-    explicit Behavior(BTreeNode *root_a);
+    explicit Behavior(const char *name_a, BTreeNode *root_a);
 
     BTreeStatus run(Entity &e);
+
+    const char *getName();
 };

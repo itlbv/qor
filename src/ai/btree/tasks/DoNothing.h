@@ -5,5 +5,7 @@
 
 class DoNothing : public BTreeTask {
 public:
+    DoNothing();
+
     BTreeStatus run(Entity &e) override;
 };

@@ -12,7 +12,7 @@ private:
     void buildGoToTargetSelector();
 
 public:
-    Selector();
+    Selector(const char *name_a);
 
     BTreeStatus run(Entity &e) override;
 };

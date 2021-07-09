@@ -2,7 +2,8 @@
 #include "checks/IsTargetClose.h"
 #include "tasks/MoveTo.h"
 
-Selector::Selector() : BTreeNode() {
+Selector::Selector(const char *name_a) : BTreeNode() {
+    name_ = name_a;
     buildGoToTargetSelector();
 }
 

@@ -11,5 +11,7 @@ private:
     static void hitTarget(Entity &e);
 
 public:
+    Fight();
+
     BTreeStatus run(Entity &e) override;
 };

@@ -10,7 +10,7 @@ private:
     void buildAttackSequence();
 
 public:
-    Sequence();
+    Sequence(const char *name_a);
 
     BTreeStatus run(Entity &e) override;
 };

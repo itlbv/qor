@@ -3,6 +3,10 @@
 
 const Uint32 Fight::AttackDelay = 2000;
 
+Fight::Fight() : BTreeTask() {
+    name_ = "fight";
+}
+
 BTreeStatus Fight::run(Entity &e) {
     if (!init_) {
         init_ = true;

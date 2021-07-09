@@ -16,5 +16,7 @@ private:
     static bool destinationReached(Entity &e);
 
 public:
+    MoveTo();
+
     BTreeStatus run(Entity &e) override;
 };

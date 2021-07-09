@@ -1,5 +1,6 @@
 #include "Entity.h"
 #include "ai/Ai.h"
+#include "Logger.h"
 
 #define ENTITY_BODY_RADIUS 0.49
 
@@ -27,6 +28,7 @@ void Entity::defend() {
 }
 
 void Entity::setBehavior(std::unique_ptr<Behavior> behavior_a) {
+    Logger::log(behavior_a->getName(), *this);
     behavior_ = std::move(behavior_a);
 }
 

@@ -5,6 +5,10 @@ const double MoveTo::DestinationReachedThreshold = 0.1;
 const double MoveTo::Speed = 5;
 Vect MoveTo::velocity_;
 
+MoveTo::MoveTo() : BTreeTask() {
+    name_ = "move_to";
+}
+
 BTreeStatus MoveTo::run(Entity &e) {
     move(e);
     checkCollisions(e);
