@@ -2,15 +2,11 @@
 
 #include <vector>
 #include "BTreeNode.h"
+#include "BTreeComposite.h"
 
-class Sequence : public BTreeNode {
-private:
-    std::vector<std::unique_ptr<BTreeNode>> children_;
-
-    void buildAttackSequence();
-
+class Sequence : public BTreeComposite {
 public:
-    Sequence(const char *name_a);
+    Sequence(const char *name_a, std::vector<BTreeNode *> children_a);
 
     BTreeStatus run(Entity &e) override;
 };

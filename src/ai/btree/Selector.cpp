@@ -1,10 +1,8 @@
 #include "Selector.h"
-#include "checks/IsTargetClose.h"
-#include "tasks/MoveTo.h"
 
-Selector::Selector(const char *name_a) : BTreeNode() {
+Selector::Selector(const char *name_a, std::vector<BTreeNode *> children_a)
+        : BTreeComposite(std::move(children_a)) {
     name_ = name_a;
-    buildGoToTargetSelector();
 }
 
 BTreeStatus Selector::run(Entity &e) {
@@ -18,9 +16,4 @@ BTreeStatus Selector::run(Entity &e) {
         else return SUCCESS;
     }
     return FAILURE;
-}
-
-void Selector::buildGoToTargetSelector() {
-    children_.push_back(std::make_unique<IsTargetClose>());
-    children_.push_back(std::make_unique<MoveTo>());
 }

@@ -1,13 +1,10 @@
 #include "Sequence.h"
-#include "tasks/MoveTo.h"
-#include "checks/IsTargetAlive.h"
-#include "Selector.h"
-#include "tasks/Fight.h"
 
-Sequence::Sequence(const char *name_a)
-        : BTreeNode() {
+#include "Selector.h"
+
+Sequence::Sequence(const char *name_a, std::vector<BTreeNode *> children_a)
+        : BTreeComposite(std::move(children_a)) {
     name_ = name_a;
-    buildAttackSequence();
 }
 
 BTreeStatus Sequence::run(Entity &e) {
@@ -21,10 +18,4 @@ BTreeStatus Sequence::run(Entity &e) {
         else return FAILURE;
     }
     return SUCCESS;
-}
-
-void Sequence::buildAttackSequence() {
-    children_.push_back(std::make_unique<IsTargetAlive>());
-    children_.push_back(std::make_unique<Selector>("fight_selector"));
-    children_.push_back(std::make_unique<Fight>());
 }
