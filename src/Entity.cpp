@@ -7,7 +7,8 @@
 Entity::Entity(int id_a, double x_a, double y_a)
         : id_(id_a),
           radius_(ENTITY_BODY_RADIUS),
-          alive_(true) {
+          alive_(true),
+          health_(3) {
     renderShape_ = std::make_unique<SDL_Rect>();
     pos_ = std::make_unique<Vect>();
     pos_->x = x_a;
@@ -24,7 +25,9 @@ void Entity::update() {
 }
 
 void Entity::defend() {
-    alive_ = false;
+    health_--;
+    if (health_ < 1)
+        alive_ = false;
 }
 
 void Entity::setBehavior(std::unique_ptr<Behavior> behavior_a) {

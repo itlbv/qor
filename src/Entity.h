@@ -10,6 +10,7 @@ class Behavior;
 class Entity {
 private:
     bool alive_;
+    int health_;
     std::unique_ptr<SDL_Rect> renderShape_;
     std::unique_ptr<Vect> dest_;
     std::shared_ptr<Entity> target_;
