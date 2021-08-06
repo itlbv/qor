@@ -66,6 +66,6 @@ Vect *Entity::getVelocity() {
     return velocity_.get();
 }
 
-bool Entity::isAlive() const {
-    return alive_;
+bool Entity::isDead() const {
+    return !alive_;
 }

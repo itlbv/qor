@@ -36,7 +36,7 @@ void Input::registerClickOnEntity() {
             selectOrClearEntity();
         }
     } else if (sdlEvent.button.button == SDL_BUTTON_RIGHT) {
-        if (selectedEntity == nullptr || !selectedEntity->isAlive()) return;
+        if (selectedEntity == nullptr || selectedEntity->isDead()) return;
         std::shared_ptr<Entity> clickedEntity(nullptr);
         for (const auto &e : Qor::entities) {
             if (SDL_PointInRect(&mousePos, e->getRenderShape())) {

@@ -14,7 +14,7 @@ BTreeStatus Fight::run(Entity &e) {
         hitTarget(e);
     }
 
-    if (!e.getTarget()->isAlive()) return SUCCESS;
+    if (e.getTarget()->isDead()) return SUCCESS;
 
     if (SDL_GetTicks() - attack_time_ < AttackDelay) {
         return RUNNING;

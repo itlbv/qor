@@ -55,7 +55,7 @@ void RenderWindow::showFrame() {
 }
 
 void RenderWindow::renderEntity(Entity &e) {
-    e.isAlive() ? SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255) //blue
+    !e.isDead() ? SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255) //blue
                 : SDL_SetRenderDrawColor(renderer, 150, 150, 150, 255); //gray
     SDL_RenderFillRect(renderer, getEntityRenderShape(&e));
 

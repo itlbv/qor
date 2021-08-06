@@ -46,5 +46,5 @@ public:
 
     Vect *getVelocity();
 
-    [[nodiscard]] bool isAlive() const;
+    [[nodiscard]] bool isDead() const;
 };

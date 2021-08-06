@@ -7,7 +7,7 @@
 class IsTargetAlive : public BTreeTask {
 public:
     BTreeStatus run(Entity &e) override {
-        if (e.isAlive())
+        if (!e.isDead())
             return SUCCESS;
         else return FAILURE;
     };
