@@ -3,20 +3,23 @@
 #include "../../../Entity.h"
 #include "../BTreeTask.h"
 
-class MoveTo : public BTreeTask {
+class MoveTo : public BTreeNode {
 private:
-    static const double DestinationReachedThreshold;
     static const double Speed;
-    static Vect velocity_;
+    const double CLOSE_ENOUGH;
 
-    static void move(Entity &e);
+    Vect velocity_;
 
-    static void checkCollisions(Entity &moving_entity);
+    void move(Entity &e);
 
-    static bool destinationReached(Entity &e);
+    void checkCollisions(Entity &moving_entity);
 
-public:
-    MoveTo();
+    bool destinationReached(Entity &e) const;
+
+protected:
+    Vect destination_;
+
+    explicit MoveTo(double x_a, double y_a, double close_enough_a);
 
     BTreeStatus run(Entity &e) override;
 };

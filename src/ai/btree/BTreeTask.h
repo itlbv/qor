@@ -5,7 +5,5 @@
 
 class BTreeTask : public BTreeNode {
 public:
-    BTreeTask();
-
-    BTreeStatus run(Entity &e) override;
+    BTreeStatus run(Entity &e) override = 0;
 };

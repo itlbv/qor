@@ -1,13 +1,12 @@
 #include "MoveTo.h"
 #include "../../../Qor.h"
 
-const double MoveTo::DestinationReachedThreshold = 0.1;
 const double MoveTo::Speed = 5;
-Vect MoveTo::velocity_;
 
-MoveTo::MoveTo() : BTreeTask() {
-    name_ = "move_to";
-}
+MoveTo::MoveTo(double x_a, double y_a, const double close_enough_a)
+        : CLOSE_ENOUGH(close_enough_a),
+          destination_({x_a, y_a}),
+          velocity_({0, 0}) {}
 
 BTreeStatus MoveTo::run(Entity &e) {
     move(e);
@@ -19,7 +18,7 @@ BTreeStatus MoveTo::run(Entity &e) {
 }
 
 void MoveTo::move(Entity &e) {
-    velocity_ = e.pos_->vectorTo(*e.getDest());
+    velocity_ = e.pos_->vectorTo(destination_);
     velocity_.normalize();
     velocity_.setLength(velocity_.length() * Qor::delta * Speed);
     e.pos_->add(velocity_.x, velocity_.y);
@@ -40,6 +39,6 @@ void MoveTo::checkCollisions(Entity &moving_entity) {
     }
 }
 
-bool MoveTo::destinationReached(Entity &e) {
-    return e.pos_->distanceTo(*e.getDest()) <= DestinationReachedThreshold;
+bool MoveTo::destinationReached(Entity &e) const {
+    return e.pos_->distanceTo(destination_) <= CLOSE_ENOUGH;
 }
