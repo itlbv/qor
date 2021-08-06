@@ -36,6 +36,7 @@ void Input::registerClickOnEntity() {
             selectOrClearEntity();
         }
     } else if (sdlEvent.button.button == SDL_BUTTON_RIGHT) {
+        if (selectedEntity == nullptr || !selectedEntity->isAlive()) return;
         std::shared_ptr<Entity> clickedEntity(nullptr);
         for (const auto &e : Qor::entities) {
             if (SDL_PointInRect(&mousePos, e->getRenderShape())) {
@@ -58,15 +59,13 @@ void Input::selectOrClearEntity() {
 }
 
 void Input::assignAttackBehavior(const std::shared_ptr<Entity> &target_entity) {
-    if (selectedEntity != nullptr)
-        Ai::assignAttackBehaviorToEntity(*selectedEntity, target_entity);
+    Ai::assignAttackBehaviorToEntity(*selectedEntity, target_entity);
 }
 
 void Input::assignMoveToBehavior() {
-    if (selectedEntity != nullptr)
-        Ai::assignMoveToBehaviorToEntity(*selectedEntity,
-                                         util::screenToWorld(mousePos.x),
-                                         util::screenToWorld(mousePos.y));
+    Ai::assignMoveToBehaviorToEntity(*selectedEntity,
+                                     util::screenToWorld(mousePos.x),
+                                     util::screenToWorld(mousePos.y));
 }
 
 void Input::registerPlayerVelocity() {
