@@ -9,7 +9,7 @@ bool Qor::quit = false;
 double Qor::delta;
 std::vector<std::shared_ptr<Entity>> Qor::entities;
 
-std::unique_ptr<Player> Qor::player = std::make_unique<Player>(5, 5);
+std::unique_ptr<Player> Qor::player = std::make_unique<Player>(15, 15);
 
 Qor::Qor()
         : window(RenderWindow("Qor", SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)),
@@ -34,8 +34,8 @@ void Qor::run(unsigned int deltaTime) {
 void Qor::createEntities() {
     entities.push_back(std::make_shared<Entity>(1, 1, 1));
     entities.push_back(std::make_shared<Entity>(2, 3, 4));
-    entities.push_back(std::make_shared<Entity>(3, 7, 3));
-    entities.push_back(std::make_shared<Entity>(4, 6, 9));
+//    entities.push_back(std::make_shared<Entity>(3, 7, 3));
+//    entities.push_back(std::make_shared<Entity>(4, 6, 9));
 }
 
 void Qor::updateEntities() {
