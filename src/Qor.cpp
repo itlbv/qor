@@ -33,7 +33,7 @@ void Qor::run(unsigned int deltaTime) {
 
 void Qor::createEntities() {
     entities.push_back(std::make_shared<Entity>(1, 1, 1));
-    entities.push_back(std::make_shared<Entity>(2, 3, 4));
+    entities.push_back(std::make_shared<Entity>(2, 5, 5));
 //    entities.push_back(std::make_shared<Entity>(3, 7, 3));
 //    entities.push_back(std::make_shared<Entity>(4, 6, 9));
 }
