@@ -20,6 +20,7 @@ Entity::Entity(int id_a, double x_a, double y_a)
 }
 
 void Entity::update() {
+    if (isDead()) return;
     if (behavior_->run(*this) != RUNNING)
         setBehavior(Ai::getDefaultBehavior());
 }
