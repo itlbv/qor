@@ -7,7 +7,7 @@
 class IsTargetClose : public BTreeTask {
 public:
     BTreeStatus run(Entity &e) override {
-        if (e.pos_->distanceTo(*(e.getTarget())->pos_) < CLOSE_DISTANCE)
+        if (e.getPos()->distanceTo(*(e.getTarget())->getPos()) < CLOSE_DISTANCE)
             return SUCCESS;
         else return FAILURE;
     };

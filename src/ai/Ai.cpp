@@ -8,7 +8,7 @@ std::unique_ptr<Behavior> Ai::getDefaultBehavior() {
 
 void Ai::assignAttackBehaviorToEntity(Entity &e, const std::shared_ptr<Entity> &target) {
     e.setTarget(target);
-    e.setDest(target->pos_->x, target->pos_->y);
+    e.setDest(target->getPos()->x, target->getPos()->y);
     e.setBehavior(BehaviorTrees::getNewBehavior("attack"));
 }
 

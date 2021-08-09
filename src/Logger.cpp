@@ -5,7 +5,7 @@ void Logger::log(const char *message) {
 }
 
 void Logger::log(const char *message, Entity &e) {
-    SDL_Log("[%s]: %s", std::to_string(e.id_).c_str(), message);
+    SDL_Log("[%s]: %s", std::to_string(e.getId()).c_str(), message);
 }
 
 void Logger::log(const std::string &message) {
@@ -13,5 +13,5 @@ void Logger::log(const std::string &message) {
 }
 
 void Logger::log(const std::string &message, Entity &e) {
-    SDL_Log("[%s]: %s", std::to_string(e.id_).c_str(), message.c_str());
+    SDL_Log("[%s]: %s", std::to_string(e.getId()).c_str(), message.c_str());
 }

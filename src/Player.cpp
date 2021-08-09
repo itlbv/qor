@@ -12,20 +12,20 @@ void Player::update() {
 }
 
 void Player::move() {
-    pos_->x += velocity_->x;
-    pos_->y += velocity_->y;
+    getPos()->x += velocity_->x;
+    getPos()->y += velocity_->y;
     velocity_->set(0, 0);
 }
 
 void Player::checkCollisions() {
     for (auto &e_ : Qor::entities) {
-        double dist_to_entity = pos_->distanceTo(*e_->pos_);
+        double dist_to_entity = getPos()->distanceTo(*e_->getPos());
 
-        if (dist_to_entity < radius_ * 2) {
-            double penetration_dist = radius_ * 2 - dist_to_entity;
-            Vect collisionNormal = pos_->vectorTo(*e_->pos_);
+        if (dist_to_entity < getRadius() * 2) {
+            double penetration_dist = getRadius() * 2 - dist_to_entity;
+            Vect collisionNormal = getPos()->vectorTo(*e_->getPos());
             collisionNormal.setLength(-penetration_dist);
-            pos_->add(collisionNormal.x, collisionNormal.y);
+            getPos()->add(collisionNormal.x, collisionNormal.y);
         }
     }
 }

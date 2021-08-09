@@ -70,3 +70,15 @@ Vect *Entity::getVelocity() {
 bool Entity::isDead() const {
     return !alive_;
 }
+
+int Entity::getId() {
+    return id_;
+}
+
+Vect *Entity::getPos() {
+    return pos_.get();
+}
+
+double Entity::getRadius() {
+    return radius_;
+}
