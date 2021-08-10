@@ -3,7 +3,7 @@
 #include "Logger.h"
 
 Mob::Mob(int id_a, double x_a, double y_a)
-        : Entity(id_a, x_a, y_a, {0, 0, 255, 255}),
+        : Entity(id_a, x_a, y_a, 0.49, {0, 0, 255, 255}),
           alive_(true),
           health_(3) {
     dest_ = std::make_unique<Vect>();

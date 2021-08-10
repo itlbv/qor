@@ -13,7 +13,7 @@ private:
     SDL_Color render_color_;
 
 public:
-    Entity(int id_a, double x_a, double y_a, SDL_Color render_color_a);
+    Entity(int id_a, double x_a, double y_a, double radius_a, SDL_Color render_color_a);
 
     int getId();
 
