@@ -54,6 +54,21 @@ void RenderWindow::showFrame() {
     SDL_RenderPresent(renderer);
 }
 
+void RenderWindow::renderResource(Resource &r) {
+    SDL_SetRenderDrawColor(renderer,
+                           r.getRenderColor()->r,
+                           r.getRenderColor()->g,
+                           r.getRenderColor()->b,
+                           r.getRenderColor()->a);
+    SDL_RenderFillRect(renderer, getEntityRenderShape(&r));
+
+    //render dot indicating entity's position
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // white
+    SDL_RenderDrawPoint(renderer,
+                        util::worldToScreen(r.getPos()->x),
+                        util::worldToScreen(r.getPos()->y));
+}
+
 void RenderWindow::renderMob(Mob &m) {
     !m.isDead() ? SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255) //blue
                 : SDL_SetRenderDrawColor(renderer, 150, 150, 150, 255); //gray

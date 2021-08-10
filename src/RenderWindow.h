@@ -4,6 +4,7 @@
 #include "Viewport.h"
 #include "Entity.h"
 #include "Mob.h"
+#include "Resource.h"
 
 class RenderWindow {
 private:
@@ -26,6 +27,8 @@ public:
     void startFrame();
 
     void showFrame();
+
+    void renderResource(Resource &r);
 
     void renderMob(Mob &m);
 };

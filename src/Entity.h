@@ -9,10 +9,11 @@ private:
     const int id_;
     const double radius_;
     std::unique_ptr<Vect> pos_;
-    std::unique_ptr<SDL_Rect> renderShape_;
+    std::unique_ptr<SDL_Rect> render_shape_;
+    SDL_Color render_color_;
 
 public:
-    Entity(int id_a, double x_a, double y_a);
+    Entity(int id_a, double x_a, double y_a, SDL_Color render_color_a);
 
     int getId();
 
@@ -21,4 +22,6 @@ public:
     double getRadius();
 
     SDL_Rect *getRenderShape();
+
+    SDL_Color *getRenderColor();
 };
