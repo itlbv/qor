@@ -1,9 +1,9 @@
 #pragma once
 
 #include "BTreeNode.h"
-#include "../../Entity.h"
+#include "../../Mob.h"
 
-class Entity;
+class Mob;
 
 class BTreeNode;
 
@@ -14,7 +14,7 @@ private:
 public:
     explicit Behavior(const char *name_a, BTreeNode *root_a);
 
-    BTreeStatus run(Entity &e);
+    BTreeStatus run(Mob &m);
 
     const char *getName();
 };

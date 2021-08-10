@@ -7,26 +7,26 @@ Fight::Fight() : BTreeTask() {
     name_ = "fight";
 }
 
-BTreeStatus Fight::run(Entity &e) {
+BTreeStatus Fight::run(Mob &m) {
     if (!init_) {
         init_ = true;
         attack_time_ = SDL_GetTicks();
-        hitTarget(e);
+        hitTarget(m);
     }
 
-    if (e.getTarget()->isDead()) return SUCCESS;
+    if (m.getTarget()->isDead()) return SUCCESS;
 
     if (SDL_GetTicks() - attack_time_ < AttackDelay) {
         return RUNNING;
     } else {
         attack_time_ = SDL_GetTicks();
-        hitTarget(e);
+        hitTarget(m);
     }
 
     return RUNNING;
 }
 
-void Fight::hitTarget(Entity &e) {
-    Logger::log("hit target", e);
-    e.getTarget()->defend();
+void Fight::hitTarget(Mob &m) {
+    Logger::log("hit target", m);
+    m.getTarget()->defend();
 }

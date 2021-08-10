@@ -8,7 +8,7 @@ MoveTo::MoveTo(double x_a, double y_a, const double close_enough_a)
           destination_({x_a, y_a}),
           velocity_({0, 0}) {}
 
-BTreeStatus MoveTo::run(Entity &e) {
+BTreeStatus MoveTo::run(Mob &e) {
     move(e);
     checkCollisions(e);
 
@@ -17,28 +17,28 @@ BTreeStatus MoveTo::run(Entity &e) {
     } else return RUNNING;
 }
 
-void MoveTo::move(Entity &e) {
+void MoveTo::move(Mob &e) {
     velocity_ = e.getPos()->vectorTo(destination_);
     velocity_.normalize();
     velocity_.setLength(velocity_.length() * Qor::delta * Speed);
     e.getPos()->add(velocity_.x, velocity_.y);
 }
 
-void MoveTo::checkCollisions(Entity &moving_entity) {
-    for (auto &e : Qor::entities) {
-        if (e.get() == &moving_entity)
+void MoveTo::checkCollisions(Mob &moving_mob) {
+    for (auto &m : Qor::mobs) {
+        if (m.get() == &moving_mob)
             continue;
 
-        double dist_to_entity = moving_entity.getPos()->distanceTo(*e->getPos());
-        if (dist_to_entity < moving_entity.getRadius() * 2) {
-            double penetration_dist = moving_entity.getRadius() * 2 - dist_to_entity;
-            Vect collisionNormal = moving_entity.getPos()->vectorTo(*e->getPos());
+        double dist_to_mob = moving_mob.getPos()->distanceTo(*m->getPos());
+        if (dist_to_mob < moving_mob.getRadius() * 2) {
+            double penetration_dist = moving_mob.getRadius() * 2 - dist_to_mob;
+            Vect collisionNormal = moving_mob.getPos()->vectorTo(*m->getPos());
             collisionNormal.setLength(-penetration_dist);
-            moving_entity.getPos()->add(collisionNormal.x, collisionNormal.y);
+            moving_mob.getPos()->add(collisionNormal.x, collisionNormal.y);
         }
     }
 }
 
-bool MoveTo::destinationReached(Entity &e) const {
-    return e.getPos()->distanceTo(destination_) <= CLOSE_ENOUGH;
+bool MoveTo::destinationReached(Mob &m) const {
+    return m.getPos()->distanceTo(destination_) <= CLOSE_ENOUGH;
 }

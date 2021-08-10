@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include "Viewport.h"
 #include "Entity.h"
+#include "Mob.h"
 
 class RenderWindow {
 private:
@@ -26,5 +27,5 @@ public:
 
     void showFrame();
 
-    void renderEntity(Entity &e);
+    void renderMob(Mob &m);
 };

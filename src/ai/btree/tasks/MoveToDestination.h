@@ -8,5 +8,5 @@ private:
 public:
     MoveToDestination();
 
-    BTreeStatus run(Entity &e) override;
+    BTreeStatus run(Mob &m) override;
 };

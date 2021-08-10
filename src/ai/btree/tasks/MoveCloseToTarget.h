@@ -6,6 +6,6 @@ class MoveCloseToTarget : public MoveTo {
 public:
     MoveCloseToTarget();
 
-    BTreeStatus run(Entity &e) override;
+    BTreeStatus run(Mob &m) override;
 };
 

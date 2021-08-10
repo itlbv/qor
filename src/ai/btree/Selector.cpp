@@ -5,9 +5,9 @@ Selector::Selector(const char *name_a, std::vector<BTreeNode *> children_a)
     name_ = name_a;
 }
 
-BTreeStatus Selector::run(Entity &e) {
+BTreeStatus Selector::run(Mob &m) {
     for (auto &child : children_) {
-        BTreeStatus status = child->run(e);
+        BTreeStatus status = child->run(m);
 
         if (status == RUNNING)
             return RUNNING;

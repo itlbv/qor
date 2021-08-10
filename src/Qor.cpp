@@ -7,7 +7,7 @@
 
 bool Qor::quit = false;
 double Qor::delta;
-std::vector<std::shared_ptr<Entity>> Qor::entities;
+std::vector<std::shared_ptr<Mob>> Qor::mobs;
 
 std::unique_ptr<Player> Qor::player = std::make_unique<Player>(15, 15);
 
@@ -26,30 +26,28 @@ void Qor::run(unsigned int deltaTime) {
     updateEntities();
 
     window.startFrame();
-    renderEntities();
+    renderMobs();
     renderPlayer();
     window.showFrame();
 }
 
 void Qor::createEntities() {
-    entities.push_back(std::make_shared<Entity>(1, 1, 1));
-    entities.push_back(std::make_shared<Entity>(2, 5, 5));
-//    entities.push_back(std::make_shared<Entity>(3, 7, 3));
-//    entities.push_back(std::make_shared<Entity>(4, 6, 9));
+    mobs.push_back(std::make_shared<Mob>(1, 1, 1));
+    mobs.push_back(std::make_shared<Mob>(2, 5, 5));
 }
 
 void Qor::updateEntities() {
-    for (auto &e : entities) {
+    for (auto &e : mobs) {
         e->update();
     }
 }
 
-void Qor::renderEntities() {
-    for (auto &e : entities) {
-        window.renderEntity(*e.get());
+void Qor::renderMobs() {
+    for (auto &m : mobs) {
+        window.renderMob(*m.get());
     }
 }
 
 void Qor::renderPlayer() {
-    window.renderEntity(*player);
+    window.renderMob(*player);
 }

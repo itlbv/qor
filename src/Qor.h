@@ -4,6 +4,7 @@
 #include "RenderWindow.h"
 #include "Viewport.h"
 #include "Entity.h"
+#include "Mob.h"
 #include "Player.h"
 
 class Qor {
@@ -13,13 +14,13 @@ private:
 
     static void createEntities();
 
-    void renderEntities();
+    void renderMobs();
 
     void renderPlayer();
 
 public:
     static bool quit;
-    static std::vector<std::shared_ptr<Entity>> entities;
+    static std::vector<std::shared_ptr<Mob>> mobs;
     static double delta;
 
     static std::unique_ptr<Player> player;

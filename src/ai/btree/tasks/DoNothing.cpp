@@ -4,6 +4,6 @@ DoNothing::DoNothing() : BTreeTask() {
     name_ = "do_nothing";
 }
 
-BTreeStatus DoNothing::run(Entity &e) {
+BTreeStatus DoNothing::run(Mob &m) {
     return RUNNING;
 }

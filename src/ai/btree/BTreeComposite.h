@@ -10,5 +10,5 @@ protected:
 
     explicit BTreeComposite(std::vector<BTreeNode *> children_a);
 
-    BTreeStatus run(Entity &e) override = 0;
+    BTreeStatus run(Mob &m) override = 0;
 };

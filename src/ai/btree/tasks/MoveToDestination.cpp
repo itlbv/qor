@@ -6,10 +6,10 @@ MoveToDestination::MoveToDestination()
     name_ = "move_to_destination";
 }
 
-BTreeStatus MoveToDestination::run(Entity &e) {
+BTreeStatus MoveToDestination::run(Mob &m) {
     if (!init) {
-        destination_.set(*e.getDest());
+        destination_.set(*m.getDest());
         init = true;
     }
-    return MoveTo::run(e);
+    return MoveTo::run(m);
 }

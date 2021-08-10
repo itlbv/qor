@@ -6,7 +6,7 @@
 const Uint8 *Input::keyStates;
 SDL_Event Input::sdlEvent;
 SDL_Point Input::mousePos;
-Entity *Input::selectedEntity;
+Mob *Input::selectedMob;
 
 void Input::processInput() {
     while (SDL_PollEvent(&sdlEvent)) {
@@ -33,39 +33,39 @@ void Input::registerMousePos() {
 void Input::registerClickOnEntity() {
     if (sdlEvent.type == SDL_MOUSEBUTTONDOWN) {
         if (sdlEvent.button.button == SDL_BUTTON_LEFT) {
-            selectOrClearEntity();
+            selectOrClearMob();
         }
     } else if (sdlEvent.button.button == SDL_BUTTON_RIGHT) {
-        if (selectedEntity == nullptr || selectedEntity->isDead()) return;
-        std::shared_ptr<Entity> clickedEntity(nullptr);
-        for (const auto &e : Qor::entities) {
-            if (SDL_PointInRect(&mousePos, e->getRenderShape())) {
-                clickedEntity = e;
+        if (selectedMob == nullptr || selectedMob->isDead()) return;
+        std::shared_ptr<Mob> clickedMob(nullptr);
+        for (const auto &m : Qor::mobs) {
+            if (SDL_PointInRect(&mousePos, m->getRenderShape())) {
+                clickedMob = m;
             }
         }
-        if (clickedEntity == nullptr)
+        if (clickedMob == nullptr)
             assignMoveToBehavior();
-        else assignAttackBehavior(clickedEntity);
+        else assignAttackBehavior(clickedMob);
     }
 }
 
-void Input::selectOrClearEntity() {
-    selectedEntity = nullptr;
-    for (auto &e : Qor::entities) {
-        if (SDL_PointInRect(&mousePos, e->getRenderShape())) {
-            selectedEntity = e.get();
+void Input::selectOrClearMob() {
+    selectedMob = nullptr;
+    for (auto &m : Qor::mobs) {
+        if (SDL_PointInRect(&mousePos, m->getRenderShape())) {
+            selectedMob = m.get();
         }
     }
 }
 
-void Input::assignAttackBehavior(const std::shared_ptr<Entity> &target_entity) {
-    Ai::assignAttackBehaviorToEntity(*selectedEntity, target_entity);
+void Input::assignAttackBehavior(const std::shared_ptr<Mob> &target_mob) {
+    Ai::assignAttackBehaviorToMob(*selectedMob, target_mob);
 }
 
 void Input::assignMoveToBehavior() {
-    Ai::assignMoveToBehaviorToEntity(*selectedEntity,
-                                     util::screenToWorld(mousePos.x),
-                                     util::screenToWorld(mousePos.y));
+    Ai::assignMoveToBehaviorToMob(*selectedMob,
+                                  util::screenToWorld(mousePos.x),
+                                  util::screenToWorld(mousePos.y));
 }
 
 void Input::registerPlayerVelocity() {

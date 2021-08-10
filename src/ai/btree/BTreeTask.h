@@ -1,9 +1,9 @@
 #pragma once
 
 #include "BTreeNode.h"
-#include "../../Entity.h"
+#include "../../Mob.h"
 
 class BTreeTask : public BTreeNode {
 public:
-    BTreeStatus run(Entity &e) override = 0;
+    BTreeStatus run(Mob &m) override = 0;
 };

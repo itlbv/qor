@@ -7,9 +7,9 @@ Sequence::Sequence(const char *name_a, std::vector<BTreeNode *> children_a)
     name_ = name_a;
 }
 
-BTreeStatus Sequence::run(Entity &e) {
+BTreeStatus Sequence::run(Mob &m) {
     for (auto &child : children_) {
-        BTreeStatus status = child->run(e);
+        BTreeStatus status = child->run(m);
 
         if (status == RUNNING)
             return RUNNING;

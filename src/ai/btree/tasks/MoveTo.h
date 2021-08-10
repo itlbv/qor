@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../Entity.h"
+#include "../../../Mob.h"
 #include "../BTreeTask.h"
 
 class MoveTo : public BTreeNode {
@@ -10,16 +10,16 @@ private:
 
     Vect velocity_;
 
-    void move(Entity &e);
+    void move(Mob &m);
 
-    void checkCollisions(Entity &moving_entity);
+    void checkCollisions(Mob &moving_mob);
 
-    bool destinationReached(Entity &e) const;
+    bool destinationReached(Mob &m) const;
 
 protected:
     Vect destination_;
 
     explicit MoveTo(double x_a, double y_a, double close_enough_a);
 
-    BTreeStatus run(Entity &e) override;
+    BTreeStatus run(Mob &m) override;
 };
