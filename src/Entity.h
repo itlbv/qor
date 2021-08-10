@@ -24,4 +24,6 @@ public:
     SDL_Rect *getRenderShape();
 
     SDL_Color *getRenderColor();
+
+    void setRenderColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 };

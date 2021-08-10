@@ -20,8 +20,10 @@ void Mob::update() {
 
 void Mob::defend() {
     health_--;
-    if (health_ < 1)
+    if (health_ < 1) {
         alive_ = false;
+        setRenderColor(150, 150, 150, 255); //gray
+    }
 }
 
 void Mob::setBehavior(std::unique_ptr<Behavior> behavior_a) {

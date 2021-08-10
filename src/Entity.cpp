@@ -32,3 +32,10 @@ SDL_Rect *Entity::getRenderShape() {
 SDL_Color *Entity::getRenderColor() {
     return &render_color_;
 }
+
+void Entity::setRenderColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
+    render_color_.r = r;
+    render_color_.g = g;
+    render_color_.b = b;
+    render_color_.a = a;
+}

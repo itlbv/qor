@@ -13,9 +13,11 @@ private:
     RenderWindow window;
     Viewport viewport;
 
+    static void createMobs();
+
     static void createResources();
 
-    static void createEntities();
+    static void updateMobs();
 
     void renderResources();
 
@@ -34,6 +36,4 @@ public:
     Qor();
 
     void run(unsigned int deltaTime);
-
-    void updateEntities();
 };
