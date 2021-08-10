@@ -15,11 +15,11 @@ private:
 public:
     Entity(int id_a, double x_a, double y_a, double radius_a, SDL_Color render_color_a);
 
-    int getId();
+    int getId() const;
 
     Vect *getPos();
 
-    double getRadius();
+    double getRadius() const;
 
     SDL_Rect *getRenderShape();
 

@@ -3,15 +3,15 @@
 
 Entity::Entity(int id_a, double x_a, double y_a, double radius_a, SDL_Color render_color_a)
         : id_(id_a),
-          radius_(radius_a) {
+          radius_(radius_a),
+          render_color_(render_color_a) {
     pos_ = std::make_unique<Vect>();
     pos_->x = x_a;
     pos_->y = y_a;
     render_shape_ = std::make_unique<SDL_Rect>();
-    render_color_ = render_color_a;
 }
 
-int Entity::getId() {
+int Entity::getId() const {
     return id_;
 }
 
@@ -19,7 +19,7 @@ Vect *Entity::getPos() {
     return pos_.get();
 }
 
-double Entity::getRadius() {
+double Entity::getRadius() const {
     return radius_;
 }
 
