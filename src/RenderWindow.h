@@ -8,8 +8,8 @@
 
 class RenderWindow {
 private:
-    SDL_Window *window;
-    SDL_Renderer *renderer;
+    SDL_Window *window_;
+    SDL_Renderer *renderer_;
 
     static SDL_Rect *getEntityRenderShape(Entity *e);
 

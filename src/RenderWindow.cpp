@@ -4,28 +4,29 @@
 #include "Util.h"
 
 RenderWindow::RenderWindow(const char *title, int width, int height)
-        : window(nullptr),
-          renderer(nullptr) {
-    window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, 0);
-    if (window == nullptr)
+        : window_(nullptr),
+          renderer_(nullptr) {
+    window_ = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, 0);
+    if (window_ == nullptr)
         std::cout << "SDL_CreateWindow FAILED. Error: " << SDL_GetError();
 
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    if (renderer == nullptr)
+    renderer_ = SDL_CreateRenderer(window_, -1, SDL_RENDERER_ACCELERATED);
+    if (renderer_ == nullptr)
         std::cout << "SDL_CreateRenderer FAILED. Error: " << SDL_GetError();
 }
 
 RenderWindow::~RenderWindow() {
-    SDL_DestroyWindow(window);
+    SDL_DestroyWindow(window_);
+    SDL_DestroyRenderer(renderer_);
 }
 
 void RenderWindow::updateViewport(Viewport *viewport) {
-    SDL_RenderSetViewport(renderer, viewport->getViewportRect());
+    SDL_RenderSetViewport(renderer_, viewport->getViewportRect());
 }
 
 void RenderWindow::startFrame() {
-    SDL_SetRenderDrawColor(renderer, 90, 125, 70, 255); // set default green
-    SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(renderer_, 90, 125, 70, 255); // set default green
+    SDL_RenderClear(renderer_);
     RenderWindow::renderMapGrid();
 }
 
@@ -46,37 +47,37 @@ void RenderWindow::renderMapGrid() {
 }
 
 void RenderWindow::renderLine(int x1, int y1, int x2, int y2) {
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+    SDL_SetRenderDrawColor(renderer_, 255, 0, 0, 255);
+    SDL_RenderDrawLine(renderer_, x1, y1, x2, y2);
 }
 
 void RenderWindow::showFrame() {
-    SDL_RenderPresent(renderer);
+    SDL_RenderPresent(renderer_);
 }
 
 void RenderWindow::renderResource(Resource &r) {
-    SDL_SetRenderDrawColor(renderer,
+    SDL_SetRenderDrawColor(renderer_,
                            r.getRenderColor()->r,
                            r.getRenderColor()->g,
                            r.getRenderColor()->b,
                            r.getRenderColor()->a);
-    SDL_RenderFillRect(renderer, getEntityRenderShape(&r));
+    SDL_RenderFillRect(renderer_, getEntityRenderShape(&r));
 
     //render dot indicating entity's position
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // white
-    SDL_RenderDrawPoint(renderer,
+    SDL_SetRenderDrawColor(renderer_, 255, 255, 255, 255); // white
+    SDL_RenderDrawPoint(renderer_,
                         util::worldToScreen(r.getPos()->x),
                         util::worldToScreen(r.getPos()->y));
 }
 
 void RenderWindow::renderMob(Mob &m) {
-    !m.isDead() ? SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255) //blue
-                : SDL_SetRenderDrawColor(renderer, 150, 150, 150, 255); //gray
-    SDL_RenderFillRect(renderer, getEntityRenderShape(&m));
+    !m.isDead() ? SDL_SetRenderDrawColor(renderer_, 0, 0, 255, 255) //blue
+                : SDL_SetRenderDrawColor(renderer_, 150, 150, 150, 255); //gray
+    SDL_RenderFillRect(renderer_, getEntityRenderShape(&m));
 
     //render dot indicating entity's position
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // white
-    SDL_RenderDrawPoint(renderer,
+    SDL_SetRenderDrawColor(renderer_, 255, 255, 255, 255); // white
+    SDL_RenderDrawPoint(renderer_,
                         util::worldToScreen(m.getPos()->x),
                         util::worldToScreen(m.getPos()->y));
 }
