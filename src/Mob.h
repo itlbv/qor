@@ -13,10 +13,15 @@ private:
     std::shared_ptr<Mob> target_;
     std::unique_ptr<Behavior> behavior_;
 
+    Uint32 hungerUpdateInterval_;
+    Uint32 previousHungerUpdateTime_;
+    double hunger_;
+
+    void updateHunger();
+
 protected:
     std::unique_ptr<Vect> velocity_;
 public:
-
     Mob(int id_a, double x_a, double y_a);
 
     void update();
