@@ -12,5 +12,5 @@ public:
 
     static void assignAttackBehaviorToMob(Mob &m, const std::shared_ptr<Mob> &target);
 
-    static void assignMoveToBehaviorToMob(Mob &m, double x, double y);
+    static void assignMoveToBehaviorToMob(Mob &m, double x_a, double y_a);
 };

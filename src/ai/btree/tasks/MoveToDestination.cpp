@@ -8,7 +8,7 @@ MoveToDestination::MoveToDestination()
 
 BTreeStatus MoveToDestination::run(Mob &m) {
     if (!init) {
-        destination_.set(*m.getDest());
+        destination_.set(*m.getTarget().lock()->getPos());
         init = true;
     }
     return MoveTo::run(m);

@@ -9,8 +9,6 @@ private:
     bool init_ = false;
     Uint32 attack_time_ = 0;
 
-    static void hitTarget(Mob &m);
-
 public:
     Fight();
 

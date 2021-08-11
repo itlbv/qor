@@ -9,8 +9,7 @@ class Mob : public Entity {
 private:
     bool alive_;
     int health_;
-    std::unique_ptr<Vect> dest_;
-    std::shared_ptr<Mob> target_;
+    std::shared_ptr<Target> target_;
     std::unique_ptr<Behavior> behavior_;
 
     Uint32 hungerUpdateInterval_;
@@ -28,15 +27,11 @@ public:
 
     void defend();
 
+    void setTarget(const std::shared_ptr<Target> &t);
+
+    std::weak_ptr<Target> getTarget();
+
     void setBehavior(std::unique_ptr<Behavior> behavior);
-
-    void setDest(double a_x, double a_y);
-
-    Vect *getDest();
-
-    void setTarget(std::shared_ptr<Mob> m);
-
-    Mob *getTarget();
 
     void setVelocity(Vect &velocity_a);
 

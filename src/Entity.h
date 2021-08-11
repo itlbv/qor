@@ -3,8 +3,9 @@
 #include <SDL.h>
 #include <memory>
 #include "Vect.h"
+#include "Target.h"
 
-class Entity {
+class Entity : public Target {
 private:
     const int id_;
     const double radius_;
@@ -13,13 +14,13 @@ private:
     SDL_Color render_color_;
 
 public:
-    Entity(int id_a, double x_a, double y_a, double radius_a, SDL_Color render_color_a);
+    Entity(int id_a, double x_a, double y_a, double radius_a, SDL_Color render_color_a, TargetType targetType_a);
 
-    int getId() const;
+    [[nodiscard]] int getId() const;
 
-    Vect *getPos();
+    Vect *getPos() override;
 
-    double getRadius() const;
+    [[nodiscard]] double getRadius() const;
 
     SDL_Rect *getRenderShape();
 

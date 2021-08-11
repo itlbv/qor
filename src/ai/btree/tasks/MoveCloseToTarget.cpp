@@ -5,6 +5,6 @@ MoveCloseToTarget::MoveCloseToTarget() : MoveTo(0, 0, 1) {
 }
 
 BTreeStatus MoveCloseToTarget::run(Mob &m) {
-    destination_.set(*m.getTarget()->getPos());
+    destination_.set(*m.getTarget().lock()->getPos());
     return MoveTo::run(m);
 }

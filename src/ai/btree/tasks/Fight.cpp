@@ -8,25 +8,24 @@ Fight::Fight() : BTreeTask() {
 }
 
 BTreeStatus Fight::run(Mob &m) {
+    Target *target = m.getTarget().lock().get();
+    Mob *mob_target = (Mob *) target;
+    if (mob_target->isDead()) return SUCCESS;
+
     if (!init_) {
         init_ = true;
         attack_time_ = SDL_GetTicks();
-        hitTarget(m);
+        Logger::log("hit target", m);
+        mob_target->defend();
     }
-
-    if (m.getTarget()->isDead()) return SUCCESS;
 
     if (SDL_GetTicks() - attack_time_ < AttackDelay) {
         return RUNNING;
     } else {
         attack_time_ = SDL_GetTicks();
-        hitTarget(m);
+        Logger::log("hit target", m);
+        mob_target->defend();
     }
 
     return RUNNING;
-}
-
-void Fight::hitTarget(Mob &m) {
-    Logger::log("hit target", m);
-    m.getTarget()->defend();
 }

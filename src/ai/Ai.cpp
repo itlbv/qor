@@ -2,6 +2,7 @@
 
 #include "btree/BehaviorTrees.h"
 #include "../Logger.h"
+#include "../Destination.h"
 
 void Ai::update(Mob &m) {
     if (m.getHunger() > 3) {
@@ -18,11 +19,10 @@ std::unique_ptr<Behavior> Ai::getDefaultBehavior() {
 
 void Ai::assignAttackBehaviorToMob(Mob &m, const std::shared_ptr<Mob> &target) {
     m.setTarget(target);
-    m.setDest(target->getPos()->x, target->getPos()->y);
     m.setBehavior(BehaviorTrees::getNewBehavior("attack"));
 }
 
-void Ai::assignMoveToBehaviorToMob(Mob &m, double x, double y) {
-    m.setDest(x, y);
+void Ai::assignMoveToBehaviorToMob(Mob &m, double x_a, double y_a) {
+    m.setTarget(std::make_shared<Destination>(x_a, y_a));
     m.setBehavior(BehaviorTrees::getNewBehavior("move_to"));
 }
