@@ -42,7 +42,10 @@ public:
 
     Vect *getVelocity();
 
+    double getHunger();
+
     [[nodiscard]] bool isDead() const;
 
+    Behavior *getBehavior();
 };
 

@@ -29,7 +29,6 @@ void Mob::updateHunger() {
         Logger::log("hunger +1", *this);
         hunger_ += 1;
     }
-    if (hunger_ > 3) Logger::log("hungry!", *this);
 }
 
 void Mob::defend() {
@@ -74,4 +73,12 @@ Vect *Mob::getVelocity() {
 
 bool Mob::isDead() const {
     return !alive_;
+}
+
+double Mob::getHunger() {
+    return hunger_;
+}
+
+Behavior *Mob::getBehavior() {
+    return behavior_.get();
 }
