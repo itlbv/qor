@@ -38,6 +38,10 @@ void Mob::defend() {
     }
 }
 
+std::vector<std::unique_ptr<Item>> *Mob::getInventory() {
+    return &inventory_;
+}
+
 std::weak_ptr<Target> Mob::getTarget() {
     return target_;
 }

@@ -1,7 +1,9 @@
 #pragma once
 
+#include <vector>
 #include "Entity.h"
 #include "ai/btree/Behavior.h"
+#include "Item.h"
 
 class Behavior;
 
@@ -16,6 +18,8 @@ private:
     Uint32 previousHungerUpdateTime_;
     double hunger_;
 
+    std::vector<std::unique_ptr<Item>> inventory_;
+
     void updateHunger();
 
 protected:
@@ -26,6 +30,8 @@ public:
     void update();
 
     void defend();
+
+    std::vector<std::unique_ptr<Item>> *getInventory();
 
     void setTarget(const std::shared_ptr<Target> &t);
 
