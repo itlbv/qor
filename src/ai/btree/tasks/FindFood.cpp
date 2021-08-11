@@ -1,5 +1,5 @@
 #include "FindFood.h"
-#include "../../../Resource.h"
+#include "../../../Item.h"
 #include "../../../Qor.h"
 
 FindFood::FindFood() {
@@ -7,7 +7,7 @@ FindFood::FindFood() {
 }
 
 BTreeStatus FindFood::run(Mob &m) {
-    if (Qor::resources.empty()) return FAILURE;
-    m.setTarget(Qor::resources[0]);
+    if (Qor::items.empty()) return FAILURE;
+    m.setTarget(Qor::items[0]);
     return SUCCESS;
 }

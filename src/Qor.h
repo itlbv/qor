@@ -6,7 +6,7 @@
 #include "Entity.h"
 #include "Mob.h"
 #include "Player.h"
-#include "Resource.h"
+#include "Item.h"
 
 class Qor {
 private:
@@ -15,11 +15,11 @@ private:
 
     static void createMobs();
 
-    static void createResources();
+    static void createItems();
 
     static void updateMobs();
 
-    void renderResources();
+    void renderItems();
 
     void renderMobs();
 
@@ -27,7 +27,7 @@ private:
 
 public:
     static bool quit;
-    static std::vector<std::shared_ptr<Resource>> resources;
+    static std::vector<std::shared_ptr<Item>> items;
     static std::vector<std::shared_ptr<Mob>> mobs;
     static double delta;
 

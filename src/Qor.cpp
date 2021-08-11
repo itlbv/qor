@@ -7,7 +7,7 @@
 
 bool Qor::quit = false;
 double Qor::delta;
-std::vector<std::shared_ptr<Resource>> Qor::resources;
+std::vector<std::shared_ptr<Item>> Qor::items;
 std::vector<std::shared_ptr<Mob>> Qor::mobs;
 
 std::unique_ptr<Player> Qor::player = std::make_unique<Player>(15, 15);
@@ -16,7 +16,7 @@ Qor::Qor()
         : window(RenderWindow("Qor", SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)),
           viewport(Viewport(SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)) {
     createMobs();
-    createResources();
+    createItems();
 }
 
 void Qor::run(unsigned int deltaTime) {
@@ -28,16 +28,16 @@ void Qor::run(unsigned int deltaTime) {
     updateMobs();
 
     window.startFrame();
-    renderResources();
+    renderItems();
     renderMobs();
     renderPlayer();
     window.showFrame();
 }
 
-void Qor::createResources() {
-    resources.push_back(std::make_shared<Resource>(10, 3, 3));
-    resources.push_back(std::make_shared<Resource>(11, 4, 8));
-    resources.push_back(std::make_shared<Resource>(12, 7, 7));
+void Qor::createItems() {
+    items.push_back(std::make_shared<Item>(10, 3, 3));
+    items.push_back(std::make_shared<Item>(11, 4, 8));
+    items.push_back(std::make_shared<Item>(12, 7, 7));
 }
 
 void Qor::createMobs() {
@@ -51,9 +51,9 @@ void Qor::updateMobs() {
     }
 }
 
-void Qor::renderResources() {
-    for (auto &r : resources) {
-        window.renderEntity(*r);
+void Qor::renderItems() {
+    for (auto &i : items) {
+        window.renderEntity(*i);
     }
 }
 
