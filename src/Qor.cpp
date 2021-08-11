@@ -7,7 +7,7 @@
 
 bool Qor::quit = false;
 double Qor::delta;
-std::vector<std::unique_ptr<Resource>> Qor::resources;
+std::vector<std::shared_ptr<Resource>> Qor::resources;
 std::vector<std::shared_ptr<Mob>> Qor::mobs;
 
 std::unique_ptr<Player> Qor::player = std::make_unique<Player>(15, 15);
@@ -35,9 +35,9 @@ void Qor::run(unsigned int deltaTime) {
 }
 
 void Qor::createResources() {
-    resources.push_back(std::make_unique<Resource>(10, 3, 3));
-    resources.push_back(std::make_unique<Resource>(11, 4, 8));
-    resources.push_back(std::make_unique<Resource>(12, 7, 7));
+    resources.push_back(std::make_shared<Resource>(10, 3, 3));
+    resources.push_back(std::make_shared<Resource>(11, 4, 8));
+    resources.push_back(std::make_shared<Resource>(12, 7, 7));
 }
 
 void Qor::createMobs() {
