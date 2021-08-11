@@ -8,5 +8,6 @@ FindFood::FindFood() {
 
 BTreeStatus FindFood::run(Mob &m) {
     if (Qor::resources.empty()) return FAILURE;
+    m.setTarget(Qor::resources[0]);
     return SUCCESS;
 }
