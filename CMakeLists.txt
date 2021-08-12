@@ -3,6 +3,8 @@ project(qor)
 
 set(CMAKE_CXX_STANDARD 20)
 
+set(CMAKE_MODULE_PATH "C:/dev/SDL2")
+
 find_package(SDL2 REQUIRED)
 
 include_directories(${SDL2_INCLUDE_DIR})
