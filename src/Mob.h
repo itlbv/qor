@@ -18,7 +18,7 @@ private:
     Uint32 previousHungerUpdateTime_;
     double hunger_;
 
-    std::vector<std::unique_ptr<Item>> inventory_;
+    std::vector<std::shared_ptr<Item>> inventory_;
 
     void updateHunger();
 
@@ -31,7 +31,7 @@ public:
 
     void defend();
 
-    std::vector<std::unique_ptr<Item>> *getInventory();
+    std::vector<std::shared_ptr<Item>> *getInventory();
 
     void setTarget(const std::shared_ptr<Target> &t);
 
