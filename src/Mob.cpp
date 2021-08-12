@@ -16,6 +16,7 @@ Mob::Mob(int id_a, double x_a, double y_a)
 
 void Mob::update() {
     if (isDead()) return;
+    Ai::update(*this);
     updateHunger();
     if (behavior_->run(*this) != RUNNING)
         setBehavior(Ai::getDefaultBehavior());
@@ -25,8 +26,8 @@ void Mob::updateHunger() {
     Uint32 currentTime = SDL_GetTicks();
     if (currentTime - previousHungerUpdateTime_ > hungerUpdateInterval_) {
         previousHungerUpdateTime_ = currentTime;
-        Logger::log("hunger +1", *this);
         hunger_ += 1;
+        Logger::log(std::to_string(hunger_), *this);
     }
 }
 
@@ -51,7 +52,7 @@ void Mob::setTarget(const std::shared_ptr<Target> &t) {
 }
 
 void Mob::setBehavior(std::unique_ptr<Behavior> behavior_a) {
-    Logger::log(behavior_a->getName(), *this);
+//    Logger::log(behavior_a->getName(), *this);
     behavior_ = std::move(behavior_a);
 }
 
@@ -68,8 +69,12 @@ bool Mob::isDead() const {
     return !alive_;
 }
 
-double Mob::getHunger() {
+int Mob::getHunger() {
     return hunger_;
+}
+
+void Mob::reduceHunger(int amount) {
+    hunger_ -= amount;
 }
 
 Behavior *Mob::getBehavior() {

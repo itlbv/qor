@@ -16,7 +16,7 @@ private:
 
     Uint32 hungerUpdateInterval_;
     Uint32 previousHungerUpdateTime_;
-    double hunger_;
+    int hunger_;
 
     std::vector<std::shared_ptr<Item>> inventory_;
 
@@ -43,7 +43,9 @@ public:
 
     Vect *getVelocity();
 
-    double getHunger();
+    int getHunger();
+
+    void reduceHunger(int amount);
 
     [[nodiscard]] bool isDead() const;
 

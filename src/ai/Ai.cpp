@@ -14,7 +14,7 @@ void Ai::update(Mob &m) {
 }
 
 std::unique_ptr<Behavior> Ai::getDefaultBehavior() {
-    return std::move(BehaviorTrees::getNewBehavior("eat"));
+    return std::move(BehaviorTrees::getNewBehavior("do_nothing"));
 }
 
 void Ai::assignAttackBehaviorToMob(Mob &m, const std::shared_ptr<Mob> &target) {

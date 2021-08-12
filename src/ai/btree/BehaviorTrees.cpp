@@ -10,6 +10,7 @@
 #include "tasks/MoveCloseToTarget.h"
 #include "tasks/FindFood.h"
 #include "tasks/PickUpTarget.h"
+#include "tasks/Eat.h"
 
 std::unique_ptr<Behavior> BehaviorTrees::getNewBehavior(const std::string &behavior_name_a) {
     if (behavior_name_a == "do_nothing")
@@ -32,9 +33,9 @@ std::unique_ptr<Behavior> BehaviorTrees::getNewBehavior(const std::string &behav
                                                             "eat_sequence", {
                                                                     new FindFood(),
                                                                     new MoveCloseToTarget(),
-                                                                    new PickUpTarget()
-                                                                    // Eat}
-                                                            })));
+                                                                    new PickUpTarget(),
+                                                                    new Eat()}
+                                                    )));
 
     return std::move(std::make_unique<Behavior>("do_nothing", new DoNothing()));
 }
