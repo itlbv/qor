@@ -42,7 +42,7 @@ void Qor::createItems() {
 
 void Qor::createMobs() {
     mobs.push_back(std::make_shared<Mob>(1, 1, 1));
-//    mobs.push_back(std::make_shared<Mob>(2, 5, 5));
+    mobs.push_back(std::make_shared<Mob>(2, 5, 5));
 }
 
 void Qor::updateMobs() {

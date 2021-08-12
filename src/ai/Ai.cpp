@@ -5,8 +5,7 @@
 #include "../Destination.h"
 
 void Ai::update(Mob &m) {
-    if (m.getHunger() > 3) {
-        Logger::log("hungry!", m);
+    if (m.getHunger() > 10) {
         m.setBehavior(BehaviorTrees::getNewBehavior("eat"));
     }
     if (m.getBehavior()->run(m) != RUNNING)
