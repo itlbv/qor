@@ -13,5 +13,11 @@ public:
     static void log(const std::string &message);
 
     static void log(const std::string &message, Entity &e);
+
+    static void error(const char *message);
+
+    static void error(const std::string &message);
+
+    static void error(const char *message, Entity &e);
 };
 

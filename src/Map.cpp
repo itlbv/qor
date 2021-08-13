@@ -19,6 +19,16 @@ void Map::putToNode(int x, int y, const std::shared_ptr<Item> &item) {
 }
 
 MapNode *Map::getNodeFromCoord(int x, int y) {
+    if (x >= Qor::MAP_SIZE || y >= Qor::MAP_SIZE) {
+        std::string message(
+                "Trying to get MapNode with coordinates bigger than Map size. Coord are: ["
+                + std::to_string(x)
+                + ", "
+                + std::to_string(y)
+                + "]");
+        Logger::error(message);
+        throw std::out_of_range(message);
+    }
     return nodes_[y * w + x].get();
 }
 
