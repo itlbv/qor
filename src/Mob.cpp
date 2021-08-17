@@ -18,8 +18,6 @@ void Mob::update() {
     if (isDead()) return;
     Ai::update(*this);
     updateHunger();
-    if (behavior_->run(*this) != RUNNING)
-        setBehavior(Ai::getDefaultBehavior());
 }
 
 void Mob::updateHunger() {
