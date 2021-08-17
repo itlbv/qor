@@ -30,8 +30,8 @@ void MoveTo::checkCollisions(Mob &moving_mob) {
             continue;
 
         double dist_to_mob = moving_mob.getPos()->distanceTo(*m->getPos());
-        if (dist_to_mob < moving_mob.getRadius() * 2) {
-            double penetration_dist = moving_mob.getRadius() * 2 - dist_to_mob;
+        if (dist_to_mob < moving_mob.getRenderShape()->radius * 2) {
+            double penetration_dist = moving_mob.getRenderShape()->radius * 2 - dist_to_mob;
             Vect collisionNormal = moving_mob.getPos()->vectorTo(*m->getPos());
             collisionNormal.setLength(-penetration_dist);
             moving_mob.getPos()->add(collisionNormal.x, collisionNormal.y);

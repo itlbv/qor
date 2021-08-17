@@ -9,8 +9,6 @@ private:
     SDL_Window *window_;
     SDL_Renderer *renderer_;
 
-    static SDL_Rect *getEntityRenderShape(Entity *e);
-
     void renderMapGrid();
 
     void renderLine(int x1, int y1, int x2, int y2);

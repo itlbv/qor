@@ -31,17 +31,17 @@ void RenderWindow::startFrame() {
 }
 
 void RenderWindow::renderMapGrid() {
-    int mapSize = util::worldToScreen(40);
+    int mapSize = Util::worldToScreen(40);
 
     //draw horizontal
     for (int i = 0; i < mapSize; ++i) {
-        int coord = util::worldToScreen(i);
+        int coord = Util::worldToScreen(i);
         renderLine(0, coord, mapSize, coord);
     }
 
     //draw vertical
     for (int i = 0; i < mapSize; ++i) {
-        int coord = util::worldToScreen(i);
+        int coord = Util::worldToScreen(i);
         renderLine(coord, 0, coord, mapSize);
     }
 }
@@ -57,24 +57,15 @@ void RenderWindow::showFrame() {
 
 void RenderWindow::renderEntity(Entity &e) {
     SDL_SetRenderDrawColor(renderer_,
-                           e.getRenderColor()->r,
-                           e.getRenderColor()->g,
-                           e.getRenderColor()->b,
-                           e.getRenderColor()->a);
-    SDL_RenderFillRect(renderer_, getEntityRenderShape(&e));
+                           e.getRenderShape()->color.r,
+                           e.getRenderShape()->color.g,
+                           e.getRenderShape()->color.b,
+                           e.getRenderShape()->color.a);
+    SDL_RenderFillRect(renderer_, &e.getRenderShape()->rect);
 
     //render dot indicating entity's position
     SDL_SetRenderDrawColor(renderer_, 255, 255, 255, 255); // white
     SDL_RenderDrawPoint(renderer_,
-                        util::worldToScreen(e.getPos()->x),
-                        util::worldToScreen(e.getPos()->y));
-}
-
-SDL_Rect *RenderWindow::getEntityRenderShape(Entity *e) {
-    SDL_Rect *renderShape = e->getRenderShape();
-    renderShape->x = util::worldToScreen(e->getPos()->x - e->getRadius());
-    renderShape->y = util::worldToScreen(e->getPos()->y - e->getRadius());
-    renderShape->w = util::worldToScreen(e->getRadius() * 2);
-    renderShape->h = util::worldToScreen(e->getRadius() * 2);
-    return renderShape;
+                        Util::worldToScreen(e.getPos()->x),
+                        Util::worldToScreen(e.getPos()->y));
 }

@@ -18,6 +18,7 @@ void Mob::update() {
     if (isDead()) return;
     Ai::update(*this);
     updateHunger();
+    updateRenderPosition();
 }
 
 void Mob::updateHunger() {
@@ -33,7 +34,10 @@ void Mob::defend() {
     health_--;
     if (health_ < 1) {
         alive_ = false;
-        setRenderColor(150, 150, 150, 255); //gray
+        getRenderShape()->color.r = 150;
+        getRenderShape()->color.g = 150;
+        getRenderShape()->color.b = 150;
+        getRenderShape()->color.a = 255;
     }
 }
 

@@ -39,7 +39,7 @@ void Input::registerClickOnEntity() {
         if (selectedMob == nullptr || selectedMob->isDead()) return;
         std::shared_ptr<Mob> clickedMob(nullptr);
         for (const auto &m : Qor::mobs) {
-            if (SDL_PointInRect(&mousePos, m->getRenderShape())) {
+            if (SDL_PointInRect(&mousePos, &m->getRenderShape()->rect)) {
                 clickedMob = m;
             }
         }
@@ -52,7 +52,7 @@ void Input::registerClickOnEntity() {
 void Input::selectOrClearMob() {
     selectedMob = nullptr;
     for (auto &m : Qor::mobs) {
-        if (SDL_PointInRect(&mousePos, m->getRenderShape())) {
+        if (SDL_PointInRect(&mousePos, &m->getRenderShape()->rect)) {
             selectedMob = m.get();
         }
     }
@@ -64,8 +64,8 @@ void Input::assignAttackBehavior(const std::shared_ptr<Mob> &target_mob) {
 
 void Input::assignMoveToBehavior() {
     Ai::assignMoveToBehaviorToMob(*selectedMob,
-                                  util::screenToWorld(mousePos.x),
-                                  util::screenToWorld(mousePos.y));
+                                  Util::screenToWorld(mousePos.x),
+                                  Util::screenToWorld(mousePos.y));
 }
 
 void Input::registerPlayerVelocity() {

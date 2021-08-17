@@ -21,8 +21,8 @@ void Player::checkCollisions() {
     for (auto &m : Qor::mobs) {
         double dist_to_entity = getPos()->distanceTo(*m->getPos());
 
-        if (dist_to_entity < getRadius() * 2) {
-            double penetration_dist = getRadius() * 2 - dist_to_entity;
+        if (dist_to_entity < getRenderShape()->radius * 2) {
+            double penetration_dist = getRenderShape()->radius * 2 - dist_to_entity;
             Vect collisionNormal = getPos()->vectorTo(*m->getPos());
             collisionNormal.setLength(-penetration_dist);
             getPos()->add(collisionNormal.x, collisionNormal.y);

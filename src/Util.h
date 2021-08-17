@@ -1,7 +1,8 @@
 #pragma once
 
-namespace util {
-    int worldToScreen(double a_world);
+class Util {
+public:
+    static int worldToScreen(double a_world);
 
-    double screenToWorld(int a_screen);
-}
+    static double screenToWorld(int a_screen);
+};
