@@ -2,11 +2,13 @@
 #include "Qor.h"
 #include "Input.h"
 
-#define SCREEN_WIDTH_PXL 1200
-#define SCREEN_HEIGHT_PXL 900
+const int Qor::SCREEN_WIDTH_PXL = 1200;
+const int Qor::SCREEN_HEIGHT_PXL = 900;
+const int Qor::MAP_SIZE = 25;
 
 bool Qor::quit = false;
 double Qor::delta;
+std::unique_ptr<Map> Qor::map;
 std::vector<std::shared_ptr<Item>> Qor::items;
 std::vector<std::shared_ptr<Mob>> Qor::mobs;
 
@@ -15,6 +17,7 @@ std::unique_ptr<Player> Qor::player = std::make_unique<Player>(15, 15);
 Qor::Qor()
         : window(RenderWindow("Qor", SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)),
           viewport(Viewport(SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)) {
+    createMap();
     createMobs();
     createItems();
 }
@@ -28,10 +31,15 @@ void Qor::run(unsigned int deltaTime) {
     updateMobs();
 
     window.startFrame();
+    renderMap();
     renderItems();
     renderMobs();
     renderPlayer();
     window.showFrame();
+}
+
+void Qor::createMap() {
+    map = std::make_unique<Map>(MAP_SIZE, MAP_SIZE);
 }
 
 void Qor::createItems() {
@@ -49,6 +57,10 @@ void Qor::updateMobs() {
     for (auto &e : mobs) {
         e->update();
     }
+}
+
+void Qor::renderMap() {
+    window.renderMap();
 }
 
 void Qor::renderItems() {

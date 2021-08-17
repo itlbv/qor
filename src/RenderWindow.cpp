@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include "RenderWindow.h"
 #include "Util.h"
+#include "Qor.h"
 
 RenderWindow::RenderWindow(const char *title, int width, int height)
         : window_(nullptr),
@@ -25,22 +26,37 @@ void RenderWindow::updateViewport(Viewport *viewport) {
 }
 
 void RenderWindow::startFrame() {
-    SDL_SetRenderDrawColor(renderer_, 90, 125, 70, 255); // set default green
     SDL_RenderClear(renderer_);
+}
+
+void RenderWindow::showFrame() {
+    SDL_RenderPresent(renderer_);
+}
+
+void RenderWindow::renderMap() {
+    SDL_SetRenderDrawColor(renderer_, 90, 125, 70, 255);
+    SDL_Rect rect;
+    for (auto &n : *Qor::map->getNodes()) {
+        rect.x = Util::worldToScreen(n->x);
+        rect.y = Util::worldToScreen(n->y);
+        rect.w = Util::worldToScreen(1);
+        rect.h = Util::worldToScreen(1);
+        SDL_RenderFillRect(renderer_, &rect);
+    }
     RenderWindow::renderMapGrid();
 }
 
 void RenderWindow::renderMapGrid() {
-    int mapSize = Util::worldToScreen(40);
+    int mapSize = Util::worldToScreen(Qor::MAP_SIZE);
 
     //draw horizontal
-    for (int i = 0; i < mapSize; ++i) {
+    for (int i = 0; i < Qor::MAP_SIZE; ++i) {
         int coord = Util::worldToScreen(i);
         renderLine(0, coord, mapSize, coord);
     }
 
     //draw vertical
-    for (int i = 0; i < mapSize; ++i) {
+    for (int i = 0; i < Qor::MAP_SIZE; ++i) {
         int coord = Util::worldToScreen(i);
         renderLine(coord, 0, coord, mapSize);
     }
@@ -49,10 +65,6 @@ void RenderWindow::renderMapGrid() {
 void RenderWindow::renderLine(int x1, int y1, int x2, int y2) {
     SDL_SetRenderDrawColor(renderer_, 255, 0, 0, 255);
     SDL_RenderDrawLine(renderer_, x1, y1, x2, y2);
-}
-
-void RenderWindow::showFrame() {
-    SDL_RenderPresent(renderer_);
 }
 
 void RenderWindow::renderEntity(Entity &e) {

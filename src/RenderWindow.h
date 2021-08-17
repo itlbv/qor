@@ -24,5 +24,7 @@ public:
 
     void showFrame();
 
+    void renderMap();
+
     void renderEntity(Entity &e);
 };
