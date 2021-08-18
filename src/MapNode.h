@@ -8,20 +8,13 @@ class MapNode {
 public:
     MapNode(int x_a, int y_a);
 
-    void put(std::shared_ptr<Item> i);
-
-    void pickUp(std::shared_ptr<Item> i);
+    void put(const std::shared_ptr<Item> &item);
 
     std::vector<std::shared_ptr<Item>> *getItems();
 
-    bool isEmpty();
-
-    bool isPassable();
-
+private:
     int x;
     int y;
-private:
-    bool passable_;
     std::vector<std::shared_ptr<Item>> items_;
 };
 
