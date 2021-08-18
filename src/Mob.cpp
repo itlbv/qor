@@ -2,8 +2,10 @@
 #include "ai/Ai.h"
 #include "Logger.h"
 
+const double Mob::BODY_SIZE = 0.49;
+
 Mob::Mob(int id_a, double x_a, double y_a)
-        : Entity(id_a, x_a, y_a, 0.49, {0, 0, 255, 255}, TargetType::DYNAMIC),
+        : Entity(id_a, x_a, y_a, BODY_SIZE, {0, 0, 255, 255}, TargetType::DYNAMIC, BODY_SIZE, BODY_SIZE),
           alive_(true),
           health_(3),
           target_(nullptr),

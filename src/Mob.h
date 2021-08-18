@@ -9,6 +9,8 @@ class Behavior;
 
 class Mob : public Entity {
 private:
+    static const double BODY_SIZE;
+
     bool alive_;
     int health_;
     std::shared_ptr<Target> target_;

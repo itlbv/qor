@@ -5,5 +5,8 @@
 class Item : public Entity {
 public:
     Item(int id_a, double x_a, double y_a);
+
+private:
+    static const double BODY_SIZE;
 };
 
