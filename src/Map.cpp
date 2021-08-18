@@ -1,4 +1,6 @@
 #include "Map.h"
+#include "Qor.h"
+#include "Logger.h"
 
 const double Map::NODE_SIZE = 1;
 

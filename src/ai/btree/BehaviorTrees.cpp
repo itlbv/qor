@@ -36,6 +36,16 @@ std::unique_ptr<Behavior> BehaviorTrees::getNewBehavior(const std::string &behav
                                                                     new PickUpTarget(),
                                                                     new Eat()}
                                                     )));
+    else if (behavior_name_a == "build")
+        return std::move(std::make_unique<Behavior>("build",
+                                                    new Sequence(
+                                                            "build_sequence", {
+                                                                    //find resources
+                                                                    //find position
+                                                                    //moveToDestination
+                                                                    //build
+                                                            }
+                                                    )));
 
     return std::move(std::make_unique<Behavior>("do_nothing", new DoNothing()));
 }

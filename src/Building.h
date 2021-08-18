@@ -4,6 +4,6 @@
 
 class Building : public Entity {
 public:
-    Building(int id_a, double x_a, double y_a, double width_a, double height_a);
+    Building(int id_a, int x_a, int y_a, int width_a, int height_a);
 };
 
