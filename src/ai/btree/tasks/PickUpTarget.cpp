@@ -12,12 +12,14 @@ BTreeStatus PickUpTarget::run(Mob &m) {
     m.getInventory()->push_back(target_item);
     Logger::log("picks up food", m);
 
-    auto it = std::find(Qor::items.begin(), Qor::items.end(), target_item);
-
-    if (it != Qor::items.end()) {
+    // remove item from MapNode
+    auto node_items = Qor::map->getNodeFromCoord((int) target_item->getPos()->x,
+                                                 (int) target_item->getPos()->y)->getItems();
+    auto it = std::find(node_items->begin(), node_items->end(), target_item);
+    if (it != node_items->end()) {
         using std::swap;
-        swap(*it, Qor::items.back());
-        Qor::items.pop_back();
+        swap(*it, node_items->back());
+        node_items->pop_back();
     }
 
     return SUCCESS;

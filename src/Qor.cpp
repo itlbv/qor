@@ -9,7 +9,6 @@ const int Qor::MAP_SIZE = 25;
 bool Qor::quit = false;
 double Qor::delta;
 std::unique_ptr<Map> Qor::map;
-std::vector<std::shared_ptr<Item>> Qor::items;
 std::vector<std::shared_ptr<Mob>> Qor::mobs;
 
 std::unique_ptr<Player> Qor::player = std::make_unique<Player>(15, 15);
@@ -44,24 +43,18 @@ void Qor::createMap() {
 
 void Qor::createItems() {
     std::shared_ptr<Item> item1 = std::make_shared<Item>(10, 3, 3);
-    items.push_back(item1);
     map->putToNode(3, 3, item1);
 
     std::shared_ptr<Item> item2 = std::make_shared<Item>(11, 4, 8);
-    items.push_back(item2);
-    map->putToNode(3, 3, item2);
+    map->putToNode(4, 8, item2);
 
     std::shared_ptr<Item> item3 = std::make_shared<Item>(12, 7, 7);
-    items.push_back(item3);
-    map->putToNode(3, 3, item3);
-
-    //    items.push_back(std::make_shared<Item>(11, 4, 8));
-//    items.push_back(std::make_shared<Item>(12, 7, 7));
+    map->putToNode(7, 7, item3);
 }
 
 void Qor::createMobs() {
     mobs.push_back(std::make_shared<Mob>(1, 1, 1));
-//    mobs.push_back(std::make_shared<Mob>(2, 5, 5));
+//    mobs.push_back(std::make_shared<Mob>(2, 8, 8));
 }
 
 void Qor::updateMobs() {
@@ -75,8 +68,10 @@ void Qor::renderMap() {
 }
 
 void Qor::renderItems() {
-    for (auto &i : items) {
-        window.renderEntity(*i);
+    for (auto &node : *Qor::map->getNodes()) {
+        for (auto &item : *node->getItems()) {
+            window.renderEntity(*item);
+        }
     }
 }
 

@@ -10,3 +10,15 @@ void MapNode::put(const std::shared_ptr<Item> &item) {
 std::vector<std::shared_ptr<Item>> *MapNode::getItems() {
     return &items_;
 }
+
+bool MapNode::isEmpty() {
+    return items_.empty();
+}
+
+int MapNode::getX() {
+    return x;
+}
+
+int MapNode::getY() {
+    return y;
+}

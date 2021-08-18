@@ -37,8 +37,8 @@ void RenderWindow::renderMap() {
     SDL_SetRenderDrawColor(renderer_, 90, 125, 70, 255);
     SDL_Rect rect;
     for (auto &n : *Qor::map->getNodes()) {
-        rect.x = Util::worldToScreen(n->x);
-        rect.y = Util::worldToScreen(n->y);
+        rect.x = Util::worldToScreen(n->getX());
+        rect.y = Util::worldToScreen(n->getY());
         rect.w = Util::worldToScreen(1);
         rect.h = Util::worldToScreen(1);
         SDL_RenderFillRect(renderer_, &rect);

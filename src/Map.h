@@ -12,11 +12,12 @@ public:
 
     std::vector<std::unique_ptr<MapNode>> *getNodes();
 
+    MapNode *getNodeFromCoord(int x, int y);
+
 private:
     int w;
     int h;
-    std::vector<std::unique_ptr<MapNode>> nodes_;
 
-    MapNode *getNodeFromCoord(int x, int y);
+    std::vector<std::unique_ptr<MapNode>> nodes_;
 };
 

@@ -12,6 +12,12 @@ public:
 
     std::vector<std::shared_ptr<Item>> *getItems();
 
+    bool isEmpty();
+
+    int getX();
+
+    int getY();
+
 private:
     int x;
     int y;
