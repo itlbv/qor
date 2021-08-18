@@ -6,6 +6,8 @@
 
 class Map {
 public:
+    static const double NODE_SIZE;
+
     Map(int w_a, int h_a);
 
     void putToNode(int x, int y, const std::shared_ptr<Item> &item);

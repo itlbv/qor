@@ -39,8 +39,8 @@ void RenderWindow::renderMap() {
     for (auto &n : *Qor::map->getNodes()) {
         rect.x = Util::worldToScreen(n->getX());
         rect.y = Util::worldToScreen(n->getY());
-        rect.w = Util::worldToScreen(1);
-        rect.h = Util::worldToScreen(1);
+        rect.w = Util::worldToScreen(Qor::map->NODE_SIZE);
+        rect.h = Util::worldToScreen(Qor::map->NODE_SIZE);
         SDL_RenderFillRect(renderer_, &rect);
     }
     RenderWindow::renderMapGrid();

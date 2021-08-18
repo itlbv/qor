@@ -1,5 +1,7 @@
 #include "Map.h"
 
+const double Map::NODE_SIZE = 1;
+
 Map::Map(int w_a, int h_a)
         : w(w_a),
           h(h_a) {
