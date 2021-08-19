@@ -28,7 +28,6 @@ void Mob::updateHunger() {
     if (currentTime - previousHungerUpdateTime_ > hungerUpdateInterval_) {
         previousHungerUpdateTime_ = currentTime;
         hunger_ += 1;
-        Logger::log(std::to_string(hunger_), *this);
     }
 }
 

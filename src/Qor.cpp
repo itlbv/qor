@@ -42,8 +42,8 @@ void Qor::createMap() {
 }
 
 void Qor::createItems() {
-    std::shared_ptr<Item> item1 = std::make_shared<Item>(10, 3, 3);
-    map->putToNode(3, 3, item1);
+    std::shared_ptr<Item> item1 = std::make_shared<Item>(10, 2, 2);
+    map->putToNode(2, 2, item1);
 
     std::shared_ptr<Item> item2 = std::make_shared<Item>(11, 4, 8);
     map->putToNode(4, 8, item2);

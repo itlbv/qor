@@ -14,13 +14,16 @@ public:
 
     bool isEmpty();
 
+    bool isPassable();
+
     int getX();
 
     int getY();
 
 private:
-    int x;
-    int y;
+    int x_;
+    int y_;
+    bool passable_;
     std::vector<std::shared_ptr<Item>> items_;
 };
 
