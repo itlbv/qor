@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "Item.h"
 #include "Map.h"
+#include "IBuilding.h"
 
 class Qor {
 private:
@@ -26,6 +27,8 @@ private:
 
     void renderItems();
 
+    void renderBuildings();
+
     void renderMobs();
 
     void renderPlayer();
@@ -37,8 +40,8 @@ public:
 
     static bool quit;
     static std::unique_ptr<Map> map;
-    static std::vector<std::shared_ptr<Item>> items;
     static std::vector<std::shared_ptr<Mob>> mobs;
+    static std::vector<std::shared_ptr<IBuilding>> buildings;
     static double delta;
 
     static std::unique_ptr<Player> player;

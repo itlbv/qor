@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "ai/btree/Behavior.h"
 #include "Item.h"
+#include "IBuilding.h"
 
 class Behavior;
 
@@ -27,6 +28,8 @@ private:
 protected:
     std::unique_ptr<Vect> velocity_;
 public:
+    std::shared_ptr<IBuilding> home;
+
     Mob(int id_a, double x_a, double y_a);
 
     void update();

@@ -10,6 +10,7 @@ bool Qor::quit = false;
 double Qor::delta;
 std::unique_ptr<Map> Qor::map;
 std::vector<std::shared_ptr<Mob>> Qor::mobs;
+std::vector<std::shared_ptr<IBuilding>> Qor::buildings;
 
 std::unique_ptr<Player> Qor::player = std::make_unique<Player>(15, 15);
 
@@ -32,6 +33,7 @@ void Qor::run(unsigned int deltaTime) {
     window.startFrame();
     renderMap();
     renderItems();
+    renderBuildings();
     renderMobs();
     renderPlayer();
     window.showFrame();
@@ -65,6 +67,12 @@ void Qor::updateMobs() {
 
 void Qor::renderMap() {
     window.renderMap();
+}
+
+void Qor::renderBuildings() {
+    for (auto &b : Qor::buildings) {
+        window.renderEntity(*b);
+    }
 }
 
 void Qor::renderItems() {

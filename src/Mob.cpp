@@ -11,7 +11,8 @@ Mob::Mob(int id_a, double x_a, double y_a)
           target_(nullptr),
           hunger_(0),
           hungerUpdateInterval_(1000),
-          previousHungerUpdateTime_(SDL_GetTicks()) {
+          previousHungerUpdateTime_(SDL_GetTicks()),
+          home(nullptr) {
     velocity_ = std::make_unique<Vect>();
     behavior_ = Ai::getDefaultBehavior();
 }

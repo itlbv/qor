@@ -8,12 +8,17 @@ void Ai::update(Mob &m) {
 //    if (m.getHunger() > 3) {
 //        m.setBehavior(BehaviorTrees::getNewBehavior("eat"));
 //    }
-    if (m.getBehavior()->run(m) != RUNNING)
+    if (m.home == nullptr) {
+        m.setBehavior(BehaviorTrees::getNewBehavior("build"));
+    }
+
+    if (m.getBehavior()->run(m) != RUNNING) {
         m.setBehavior(Ai::getDefaultBehavior());
+    }
 }
 
 std::unique_ptr<Behavior> Ai::getDefaultBehavior() {
-    return std::move(BehaviorTrees::getNewBehavior("build"));
+    return std::move(BehaviorTrees::getNewBehavior("do_nothing"));
 }
 
 void Ai::assignAttackBehaviorToMob(Mob &m, const std::shared_ptr<Mob> &target) {
