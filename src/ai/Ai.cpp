@@ -8,9 +8,10 @@ void Ai::update(Mob &m) {
 //    if (m.getHunger() > 3) {
 //        m.setBehavior(BehaviorTrees::getNewBehavior("eat"));
 //    }
-    if (m.home == nullptr) {
-        m.setBehavior(BehaviorTrees::getNewBehavior("build"));
-    }
+
+//    if (m.home == nullptr) {
+//        m.setBehavior(BehaviorTrees::getNewBehavior("build"));
+//    }
 
     if (m.getBehavior()->run(m) != RUNNING) {
         m.setBehavior(Ai::getDefaultBehavior());
