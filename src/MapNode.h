@@ -16,9 +16,13 @@ public:
 
     bool isPassable();
 
+    void setPassable(bool passable_a);
+
     int getX();
 
     int getY();
+
+    std::string getStringCoord();
 
 private:
     int x_;

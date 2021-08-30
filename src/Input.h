@@ -20,6 +20,8 @@ private:
 
     static void selectOrClearMob();
 
+    static void changeNodePassability();
+
     static void assignMoveToBehavior();
 
     static void assignAttackBehavior(const std::shared_ptr<Mob> &target_mob);

@@ -2,6 +2,7 @@
 #include "Qor.h"
 #include "ai/Ai.h"
 #include "Util.h"
+#include "Logger.h"
 
 const Uint8 *Input::keyStates;
 SDL_Event Input::sdlEvent;
@@ -54,8 +55,21 @@ void Input::selectOrClearMob() {
     for (auto &m : Qor::mobs) {
         if (SDL_PointInRect(&mousePos, &m->getRenderShape()->rect)) {
             selectedMob = m.get();
+            return;
         }
     }
+
+    changeNodePassability();
+}
+
+void Input::changeNodePassability() {
+    MapNode *node_under_mouse = Qor::map->getNodeFromCoord(static_cast<int>(Util::screenToWorld(mousePos.x)),
+                                                           static_cast<int>(Util::screenToWorld(mousePos.y)));
+    node_under_mouse->setPassable(!node_under_mouse->isPassable());
+    Logger::log("node "
+                + node_under_mouse->getStringCoord()
+                + " is "
+                + std::to_string(node_under_mouse->isPassable()));
 }
 
 void Input::assignAttackBehavior(const std::shared_ptr<Mob> &target_mob) {

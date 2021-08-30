@@ -1,7 +1,7 @@
 #include "MapNode.h"
 
 MapNode::MapNode(int x_a, int y_a)
-        : x_(x_a), y_(y_a) {}
+        : x_(x_a), y_(y_a), passable_(true) {}
 
 void MapNode::put(const std::shared_ptr<Item> &item) {
     items_.push_back(item);
@@ -24,5 +24,18 @@ int MapNode::getY() {
 }
 
 bool MapNode::isPassable() {
-    return true;
+    return passable_;
+}
+
+void MapNode::setPassable(bool passable_a) {
+    passable_ = passable_a;
+}
+
+std::string MapNode::getStringCoord() {
+    return "["
+           + std::to_string(x_)
+           + ", "
+           + std::to_string(y_)
+           + "]";
+
 }

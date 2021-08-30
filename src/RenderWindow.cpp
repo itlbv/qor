@@ -34,9 +34,10 @@ void RenderWindow::showFrame() {
 }
 
 void RenderWindow::renderMap() {
-    SDL_SetRenderDrawColor(renderer_, 90, 125, 70, 255);
     SDL_Rect rect;
     for (auto &n : *Qor::map->getNodes()) {
+        n->isPassable() ? SDL_SetRenderDrawColor(renderer_, 90, 125, 70, 255)
+                        : SDL_SetRenderDrawColor(renderer_, 190, 125, 70, 255);
         rect.x = Util::worldToScreen(n->getX());
         rect.y = Util::worldToScreen(n->getY());
         rect.w = Util::worldToScreen(Qor::map->NODE_SIZE);
