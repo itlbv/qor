@@ -14,19 +14,19 @@ std::vector<std::shared_ptr<Item>> *MapNode::getItems() {
     return &items_;
 }
 
-bool MapNode::isEmpty() {
+bool MapNode::isEmpty() const {
     return items_.empty();
 }
 
-int MapNode::getX() {
+int MapNode::getX() const {
     return x_;
 }
 
-int MapNode::getY() {
+int MapNode::getY() const {
     return y_;
 }
 
-bool MapNode::isPassable() {
+bool MapNode::isPassable() const {
     return passable_;
 }
 
@@ -34,7 +34,7 @@ void MapNode::setPassable(bool passable_a) {
     passable_ = passable_a;
 }
 
-std::string MapNode::getStringCoord() {
+std::string MapNode::getStringCoord() const {
     return "["
            + std::to_string(x_)
            + ", "

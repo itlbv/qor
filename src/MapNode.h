@@ -12,17 +12,17 @@ public:
 
     std::vector<std::shared_ptr<Item>> *getItems();
 
-    bool isEmpty();
+    [[nodiscard]] bool isEmpty() const;
 
-    bool isPassable();
+    [[nodiscard]] bool isPassable() const;
 
     void setPassable(bool passable_a);
 
-    int getX();
+    [[nodiscard]] int getX() const;
 
-    int getY();
+    [[nodiscard]] int getY() const;
 
-    std::string getStringCoord();
+    [[nodiscard]] std::string getStringCoord() const;
 
     void setMovementCost(double cost_a);
 
