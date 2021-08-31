@@ -6,6 +6,8 @@ const int Qor::SCREEN_WIDTH_PXL = 1200;
 const int Qor::SCREEN_HEIGHT_PXL = 900;
 const int Qor::MAP_SIZE = 25;
 
+RenderWindow Qor::window("Qor", SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL);
+
 bool Qor::quit = false;
 double Qor::delta;
 std::unique_ptr<Map> Qor::map;
@@ -15,8 +17,7 @@ std::vector<std::shared_ptr<IBuilding>> Qor::buildings;
 std::unique_ptr<Player> Qor::player = std::make_unique<Player>(15, 15);
 
 Qor::Qor()
-        : window(RenderWindow("Qor", SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)),
-          viewport(Viewport(SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)) {
+        : viewport(Viewport(SCREEN_WIDTH_PXL, SCREEN_HEIGHT_PXL)) {
     createMap();
     createMobs();
     createItems();

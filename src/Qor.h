@@ -12,7 +12,6 @@
 
 class Qor {
 private:
-    RenderWindow window;
     Viewport viewport;
 
     static void createMap();
@@ -34,6 +33,8 @@ private:
     void renderPlayer();
 
 public:
+    static RenderWindow window;
+
     static const int SCREEN_WIDTH_PXL;
     static const int SCREEN_HEIGHT_PXL;
     static const int MAP_SIZE;
