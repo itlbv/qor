@@ -24,10 +24,15 @@ public:
 
     std::string getStringCoord();
 
+    void setMovementCost(double cost_a);
+
+    double getMovementCost();
+
 private:
     int x_;
     int y_;
     bool passable_;
+    double movement_cost_;
     std::vector<std::shared_ptr<Item>> items_;
 };
 

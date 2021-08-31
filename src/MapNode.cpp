@@ -1,7 +1,10 @@
 #include "MapNode.h"
 
 MapNode::MapNode(int x_a, int y_a)
-        : x_(x_a), y_(y_a), passable_(true) {}
+        : x_(x_a),
+          y_(y_a),
+          passable_(true),
+          movement_cost_(1) {}
 
 void MapNode::put(const std::shared_ptr<Item> &item) {
     items_.push_back(item);
@@ -38,4 +41,12 @@ std::string MapNode::getStringCoord() {
            + std::to_string(y_)
            + "]";
 
+}
+
+void MapNode::setMovementCost(double cost_a) {
+    movement_cost_ = cost_a;
+}
+
+double MapNode::getMovementCost() {
+    return movement_cost_;
 }
