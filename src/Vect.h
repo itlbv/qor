@@ -5,7 +5,7 @@
 struct Vect {
     double x, y;
 
-    double length() const {
+    [[nodiscard]] double length() const {
         using namespace std;
         return sqrt(pow(x, 2) + pow(y, 2));
     };
@@ -18,26 +18,26 @@ struct Vect {
         }
     }
 
-    void setLength(double a_length) {
+    void setLength(double length_a) {
         double length = this->length();
         if (length > 0) {
-            double newLength = a_length / length;
+            double newLength = length_a / length;
             x *= newLength;
             y *= newLength;
         }
     }
 
-    double distanceTo(const Vect &a_dest) const {
-        return sqrt(pow(abs(x - a_dest.x), 2) + pow(abs(y - a_dest.y), 2));
+    [[nodiscard]] double distanceTo(const Vect &pos_a) const {
+        return sqrt(pow(abs(x - pos_a.x), 2) + pow(abs(y - pos_a.y), 2));
     }
 
-    Vect vectorTo(const Vect &a_dest) const {
-        return {a_dest.x - x, a_dest.y - y};
+    Vect vectorTo(const Vect &pos_a) const {
+        return {pos_a.x - x, pos_a.y - y};
     }
 
-    void add(double a_x, double a_y) {
-        x += a_x;
-        y += a_y;
+    void add(double x_a, double y_a) {
+        x += x_a;
+        y += y_a;
     }
 
     void zero() {
@@ -45,9 +45,9 @@ struct Vect {
         y = 0;
     }
 
-    void set(Vect &vect) {
-        x = vect.x;
-        y = vect.y;
+    void set(Vect &vect_a) {
+        x = vect_a.x;
+        y = vect_a.y;
     }
 
     void set(double x_a, double y_a) {
