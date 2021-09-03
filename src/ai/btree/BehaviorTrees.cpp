@@ -14,12 +14,12 @@
 #include "tasks/FindPositionToBuild.h"
 #include "tasks/Build.h"
 
-std::unique_ptr<Behavior> BehaviorTrees::getNewBehavior(const std::string &behavior_name_a) {
-    if (behavior_name_a == "do_nothing")
+std::unique_ptr<Behavior> BehaviorTrees::getNewBehavior(const char *behavior_name_a) {
+    if (std::strcmp(behavior_name_a, "do_nothing") == 0)
         return std::move(std::make_unique<Behavior>("do_nothing", new DoNothing()));
-    else if (behavior_name_a == "move_to")
+    else if (std::strcmp(behavior_name_a, "move_to") == 0)
         return std::move(std::make_unique<Behavior>("move_to_destination", new MoveToDestination()));
-    else if (behavior_name_a == "attack")
+    else if (std::strcmp(behavior_name_a, "attack") == 0)
         return std::move(std::make_unique<Behavior>("attack",
                                                     new Sequence(
                                                             "attack_sequence", {
@@ -29,7 +29,7 @@ std::unique_ptr<Behavior> BehaviorTrees::getNewBehavior(const std::string &behav
                                                                             new MoveCloseToTarget()}),
                                                                     new Fight()}
                                                     )));
-    else if (behavior_name_a == "eat")
+    else if (std::strcmp(behavior_name_a, "eat") == 0)
         return std::move(std::make_unique<Behavior>("eat",
                                                     new Sequence(
                                                             "eat_sequence", {
@@ -38,7 +38,7 @@ std::unique_ptr<Behavior> BehaviorTrees::getNewBehavior(const std::string &behav
                                                                     new PickUpTarget(),
                                                                     new Eat()}
                                                     )));
-    else if (behavior_name_a == "build")
+    else if (std::strcmp(behavior_name_a, "build") == 0)
         return std::move(std::make_unique<Behavior>("build",
                                                     new Sequence(
                                                             "build_sequence", {

@@ -1,3 +1,4 @@
+#include <string>
 #include "MapNode.h"
 
 MapNode::MapNode(int x_a, int y_a)
@@ -35,11 +36,11 @@ void MapNode::setPassable(bool passable_a) {
 }
 
 std::string MapNode::getStringCoord() const {
-    return "["
+    return std::string("["
            + std::to_string(x_)
            + ", "
            + std::to_string(y_)
-           + "]";
+           + "]");
 
 }
 

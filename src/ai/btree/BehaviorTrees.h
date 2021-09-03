@@ -6,5 +6,5 @@
 
 class BehaviorTrees {
 public:
-    static std::unique_ptr<Behavior> getNewBehavior(const std::string &behavior_name_a);
+    static std::unique_ptr<Behavior> getNewBehavior(const char *behavior_name_a);
 };
